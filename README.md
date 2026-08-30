@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistem Penilaian Potensi Konflik
 
-## Getting Started
+Aplikasi web untuk melakukan penilaian awal terhadap indikator potensi konflik berdasarkan 15 pertanyaan dengan jawaban Ya/Tidak dan bobot yang telah ditentukan.
 
-First, run the development server:
+Website bersifat **informatif dan preventif**. Hasil merupakan penilaian berbasis indikator yang dimasukkan pengguna, bukan diagnosis atau keputusan final mengenai suatu konflik.
+
+## Fitur
+
+- **Penilaian Konflik** — 15 pertanyaan Ya/Tidak dengan progress bar, satu pertanyaan per layar, ringkasan sebelum submit
+- **Perhitungan Skor Otomatis** — Server menghitung ulang skor berdasarkan bobot pertanyaan (total maks 30)
+- **Klasifikasi 4 Kategori** — Aman (0–6), Waspada (7–13), Potensi Konflik (14–21), Risiko Tinggi (22–30)
+- **Identifikasi Indikator** — Menampilkan indikator spesifik berdasarkan jawaban "Ya"
+- **Rekomendasi** — Saran tindakan sesuai kategori hasil
+- **Materi Edukasi** — Artikel edukasi relevan berdasarkan kategori
+- **Simulasi Kasus** — Struktur simulasi kasus (placeholder, dikelola via admin)
+- **Disclaimer** — Peringatan bahwa hasil bukan keputusan final
+
+## Tech Stack
+
+| Teknologi | Fungsi |
+|---|---|
+| [Next.js](https://nextjs.org) (App Router) | Framework |
+| [TypeScript](https://www.typescriptlang.org) | Bahasa |
+| [Tailwind CSS](https://tailwindcss.com) | Styling |
+| [shadcn/ui](https://ui.shadcn.com) | Komponen UI |
+| [Zod](https://zod.dev) | Validasi |
+| [Vitest](https://vitest.dev) | Testing |
+
+## Struktur Halaman
+
+| Route | Deskripsi |
+|---|---|
+| `/` | Landing page — hero, cara kerja, edukasi singkat, simulasi, disclaimer |
+| `/penilaian` | Kuesioner 15 pertanyaan Ya/Tidak |
+| `/hasil` | Hasil penilaian — skor, kategori, indikator, rekomendasi, edukasi |
+| `/edukasi` | Daftar materi edukasi |
+| `/edukasi/[slug]` | Detail materi edukasi |
+| `/simulasi` | Daftar simulasi kasus |
+| `/simulasi/[id]` | Detail simulasi kasus |
+
+## Cara Kerja
+
+```
+Pengguna → Jawab 15 pertanyaan → Server hitung skor
+→ Klasifikasi kategori → Tampilkan indikator
+→ Rekomendasi otomatis → Materi edukasi
+```
+
+## Memulai
+
+### Prasyarat
+
+- Node.js 18+
+- npm
+
+### Instalasi
+
+```bash
+git clone <repo-url>
+cd conflict-assessment
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Test
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+8 test case boundary wajib + 2 edge case (skor negatif & skor > 30).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Klasifikasi Skor
 
-## Deploy on Vercel
+| Skor | Kategori | Warna |
+|---:|---|---|
+| 0–6 | Aman | Hijau |
+| 7–13 | Waspada | Kuning |
+| 14–21 | Potensi Konflik | Oranye |
+| 22–30 | Risiko Tinggi | Merah |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy ke Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push repository ke GitHub
+2. Import project di [vercel.com](https://vercel.com)
+3. Vercel otomatis mendeteksi Next.js — klik **Deploy**
+
+## Struktur Project
+
+```
+app/
+├── page.tsx                  # Landing page
+├── penilaian/page.tsx        # Kuesioner
+├── hasil/page.tsx            # Hasil penilaian
+├── edukasi/                  # Materi edukasi
+├── simulasi/                 # Simulasi kasus
+└── api/assessment/route.ts   # API scoring
+
+components/
+├── assessment/               # Komponen kuesioner
+├── results/                  # Komponen hasil
+└── ui/                       # shadcn/ui
+
+lib/
+├── scoring.ts                # Perhitungan skor
+├── classification.ts         # Klasifikasi kategori
+├── recommendations.ts        # Rekomendasi & edukasi
+├── validation.ts             # Validasi Zod
+└── questions.ts              # Data 15 pertanyaan
+
+types/
+└── assessment.ts             # TypeScript types
+```
+
+## Roadmap
+
+- [x] Landing page
+- [x] Assessment 15 pertanyaan
+- [x] Scoring & klasifikasi
+- [x] Halaman hasil
+- [x] Materi edukasi
+- [x] Simulasi kasus (struktur)
+- [x] Testing
+- [ ] Database (PostgreSQL + Drizzle ORM)
+- [ ] Admin panel (CRUD pertanyaan, edukasi, simulasi)
+- [ ] Authentication admin
+
+## Disclaimer
+
+Hasil penilaian merupakan gambaran awal berdasarkan jawaban yang diberikan dan tidak dimaksudkan sebagai keputusan final atau diagnosis terhadap suatu konflik. Untuk kondisi yang serius atau darurat, gunakan saluran bantuan atau pelaporan resmi yang sesuai.
+
+## Lisensi
+
+Private
