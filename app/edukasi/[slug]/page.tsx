@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
+import InteractiveFlowchart from "../components/InteractiveFlowchart";
 
 type Section = {
   title: string;
@@ -286,82 +287,6 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
           { subtitle: "6. Perselisihan kecil yang dibiarkan", text: "Masalah yang sebenarnya sepele jika dibiarkan berlarut-larut dapat membesar." },
         ],
       },
-      {
-        title: "Langkah 1: Kenali Masalah",
-        content: [
-          { subtitle: "1. Identifikasi sumber persoalan", text: "Apa yang menjadi pemicu? Perbedaan kepentingan, kesalahpahaman, persaingan, atau isu SARA?" },
-          { subtitle: "2. Kenali pihak yang terlibat", text: "Memahami posisi dan kepentingan pihak yang berdampak memudahkan proses komunikasi." },
-          { subtitle: "3. Pahami konteks dan latar belakang", text: "Biasanya ada rangkaian peristiwa sebelumnya yang memengaruhi situasi saat ini." },
-          { subtitle: "4. Bedakan masalah inti dengan gejala", text: "Mengenali masalah inti mencegah penyelesaian yang hanya bersifat sementara." },
-          { subtitle: "5. Amati skala dan potensi dampak", text: "Penilaian ini penting untuk menentukan seberapa cepat langkah penanganan perlu diambil." },
-        ],
-      },
-      {
-        title: "Langkah 2: Cek Informasi",
-        content: [
-          { subtitle: "1. Telusuri sumber asli", text: "Cari tahu dari mana informasi pertama kali berasal dan kredibilitasnya." },
-          { subtitle: "2. Bandingkan dengan sumber lain", text: "Bersikap skeptis sebelum mempercayainya sepenuhnya." },
-          { subtitle: "3. Perhatikan fakta versus opini", text: "Pisahkan apa yang benar-benar terjadi dari sekadar dugaan atau opini." },
-          { subtitle: "4. Waspadai konten provokatif", text: "Informasi yang sengaja memancing emosi patut dicurigai." },
-          { subtitle: "5. Tanyakan langsung", text: "Mengonfirmasi langsung kepada pihak terkait jauh lebih efektif." },
-          { subtitle: "6. Jangan buru-buru menyebarkan", text: "Menahan diri membagikan informasi yang belum terverifikasi adalah tanggung jawab sosial." },
-        ],
-      },
-      {
-        title: "Langkah 3: Kendalikan Emosi",
-        content: [
-          { subtitle: "1. Beri jeda sebelum bereaksi", text: "Tahan diri untuk tidak langsung merespons saat merasa marah atau tersinggung." },
-          { subtitle: "2. Sadari dan akui emosi", text: "Dengan mengenali emosi yang dirasakan, seseorang lebih mudah mengendalikannya." },
-          { subtitle: "3. Hindari mengambil keputusan penting", text: "Tunggu hingga kondisi lebih tenang sebelum menentukan sikap." },
-          { subtitle: "4. Fokus pada penyelesaian", text: "Tujuan utama adalah mencari solusi terbaik bagi semua pihak, bukan saling mengalahkan." },
-          { subtitle: "5. Gunakan cara menenangkan diri", text: "Berbicara dengan orang yang dipercaya atau mengalihkan perhatian sejenak." },
-          { subtitle: "6. Berlatih empati", text: "Mencoba memahami sudut pandang pihak lain membantu meredam emosi negatif." },
-        ],
-      },
-      {
-        title: "Langkah 4: Komunikasikan dengan Baik",
-        content: [
-          { subtitle: "1. Sampaikan secara langsung", text: "Lebih efektif daripada membicarakannya di belakang atau melalui perantara." },
-          { subtitle: "2. Gunakan bahasa tidak menyerang", text: "Fokus pada penyampaian perasaan dan fakta, bukan menghakimi." },
-          { subtitle: "3. Dengarkan sudut pandang pihak lain", text: "Memberi kesempatan pihak lain untuk menjelaskan membantu menemukan akar masalah." },
-          { subtitle: "4. Pilih waktu dan tempat yang tepat", text: "Dilakukan di tempat yang tenang agar pembicaraan berlangsung dengan kepala dingin." },
-          { subtitle: "5. Perhatikan bahasa tubuh", text: "Nada bicara yang tenang menciptakan suasana kondusif untuk berdialog." },
-          { subtitle: "6. Klarifikasi, jangan berasumsi", text: "Bertanya langsung untuk mencegah kesalahpahaman yang berkepanjangan." },
-        ],
-      },
-      {
-        title: "Langkah 5: Hargai Perbedaan",
-        content: [
-          { subtitle: "1. Menyadari perbedaan adalah alami", text: "Setiap orang tumbuh dengan latar belakang berbeda, wajar jika pandangannya berbeda." },
-          { subtitle: "2. Tidak memaksakan pandangan", text: "Bersikap terbuka bahwa ada banyak sudut pandang yang valid." },
-          { subtitle: "3. Menghindari sikap merendahkan", text: "Tidak mengejek atau memperlakukan pihak lain tidak adil karena perbedaan." },
-          { subtitle: "4. Belajar memahami sebelum menilai", text: "Luangkan waktu memahami konteks di balik suatu pandangan." },
-          { subtitle: "5. Fokus pada kesamaan tujuan", text: "Menekankan kepentingan bersama meredakan ketegangan." },
-          { subtitle: "6. Membangun interaksi positif", text: "Semakin sering berinteraksi positif, semakin berkurang prasangka." },
-        ],
-      },
-      {
-        title: "Langkah 6: Musyawarahkan Penyelesaian",
-        content: [
-          { subtitle: "1. Beri kesempatan yang setara", text: "Setiap pihak harus mendapat kesempatan menyampaikan pandangan." },
-          { subtitle: "2. Fokus pada kepentingan bersama", text: "Menemukan kepentingan mendasar agar solusi menjawab kebutuhan semua pihak." },
-          { subtitle: "3. Bersikap terbuka terhadap alternatif", text: "Diskusikan beberapa solusi dan konsekuensinya." },
-          { subtitle: "4. Utamakan mufakat", text: "Mencapai kesepakatan yang diterima bersama, meski harus saling mengalah." },
-          { subtitle: "5. Jaga suasana kondusif", text: "Hindari perdebatan saling menyalahkan di tengah diskusi." },
-          { subtitle: "6. Catat kesepakatan", text: "Memastikan semua pihak memahami apa yang disepakati." },
-        ],
-      },
-      {
-        title: "Langkah 7: Libatkan Pihak Lain (Jika Diperlukan)",
-        content: [
-          { subtitle: "1. Tokoh Masyarakat", text: "Ketua RT/RW atau tokoh dihormati untuk menengahi persoalan." },
-          { subtitle: "2. Tokoh agama", text: "Berperan penting terutama untuk isu terkait keyakinan." },
-          { subtitle: "3. Tokoh adat", text: "Menyelesaikan sengketa berdasarkan hukum adat yang berlaku." },
-          { subtitle: "4. Guru atau pihak sekolah", text: "Sebagai mediator untuk konflik di lingkungan pendidikan." },
-          { subtitle: "5. Aparat keamanan dan pemerintah", text: "Diperlukan jika mengarah pada ancaman keamanan atau pelanggaran hukum." },
-          { subtitle: "6. Lembaga mediasi", text: "Forum formal penyelesaian sengketa seperti FKUB atau lembaga adat." },
-        ],
-      },
     ],
   },
   "peran-generasi-muda": {
@@ -410,23 +335,22 @@ function SectionContent({ content }: { content: string | string[] | { subtitle: 
   }
 
   return (
-    <ul className="space-y-3">
+    <div className="space-y-3">
       {(content as { subtitle: string; text: string; isCategory?: boolean }[]).map((item, i) => {
         if (item.isCategory) {
           return (
-            <li key={i} className="text-sm pt-2 pb-1">
-              <span className="font-bold text-base text-gray-800">{item.subtitle}</span>
-            </li>
+            <p key={i} className="text-sm pt-2 pb-1 font-bold text-base text-gray-800">
+              {item.subtitle}
+            </p>
           );
         }
         return (
-          <li key={i} className={`text-sm ${item.subtitle.match(/^[0-9]\./) ? 'pl-4' : ''}`}>
-            <span className="font-semibold text-foreground">{item.subtitle}: </span>
-            <span className="text-muted-foreground">{item.text}</span>
-          </li>
+          <p key={i} className="text-sm leading-relaxed text-muted-foreground">
+            <span className="font-semibold text-foreground">{item.subtitle}</span> {item.text}
+          </p>
         );
       })}
-    </ul>
+    </div>
   );
 }
 
@@ -512,9 +436,18 @@ export default function EdukasiDetailPage({ params }: { params: Promise<{ slug: 
 
         {/* Sections */}
         <div className="space-y-1">
-          {data.sections.map((section, i) => (
-            <SectionCard key={i} section={section} />
-          ))}
+          {slug === "pencegahan-konflik" ? (
+            <>
+              {data.sections.map((section, i) => (
+                <SectionCard key={i} section={section} />
+              ))}
+              <InteractiveFlowchart />
+            </>
+          ) : (
+            data.sections.map((section, i) => (
+              <SectionCard key={i} section={section} />
+            ))
+          )}
         </div>
         
         <div className="mt-12 flex justify-center">
