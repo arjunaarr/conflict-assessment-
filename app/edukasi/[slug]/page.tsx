@@ -339,14 +339,14 @@ function SectionContent({ content }: { content: string | string[] | { subtitle: 
       {(content as { subtitle: string; text: string; isCategory?: boolean }[]).map((item, i) => {
         if (item.isCategory) {
           return (
-            <p key={i} className="text-sm pt-2 pb-1 font-bold text-base text-gray-800">
+            <p key={i} className="text-sm pt-2 pb-1 text-base text-gray-800">
               {item.subtitle}
             </p>
           );
         }
         return (
           <p key={i} className="text-sm leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">{item.subtitle}</span> {item.text}
+            {item.subtitle} {item.text}
           </p>
         );
       })}

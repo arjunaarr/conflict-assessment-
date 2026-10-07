@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AssessmentResult } from "@/types/assessment";
 import { ScoreDisplay } from "@/components/results/score-display";
-import { IndicatorList } from "@/components/results/indicator-list";
 import { RecommendationList } from "@/components/results/recommendation-list";
+import { CategoryMatrix } from "@/components/results/category-matrix";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -57,9 +57,10 @@ export default function HasilPage() {
           </CardContent>
         </Card>
 
-        {result.detectedIndicators.length > 0 && (
-          <IndicatorList indicators={result.detectedIndicators} />
-        )}
+        <CategoryMatrix
+          currentCategoryKey={result.category.key}
+          totalScore={result.totalScore}
+        />
 
         <RecommendationList
           recommendations={result.recommendations}
@@ -69,16 +70,21 @@ export default function HasilPage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <BookOpen className="h-5 w-5" />
+              <BookOpen className="h-5 w-5 text-primary" />
               Materi Edukasi yang Disarankan
             </CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
               {result.educationTopics.map((topic, i) => (
-                <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>{topic}</span>
+                <li key={i} className="text-sm text-muted-foreground flex items-center justify-between gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors">
+                  <div className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    <span className="font-medium text-gray-800">{topic}</span>
+                  </div>
+                  <Link href="/edukasi" className="text-xs text-primary font-medium hover:underline flex items-center gap-1 shrink-0">
+                    Pelajari Materi &rarr;
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -92,8 +98,15 @@ export default function HasilPage() {
           </AlertDescription>
         </Alert>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <Link href="/simulasi" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90">
+              Lanjut ke Simulasi Kasus &rarr;
+            </Button>
+          </Link>
           <Button
+            variant="outline"
+            className="w-full sm:w-auto"
             onClick={() => {
               sessionStorage.removeItem("assessmentResult");
               router.push("/penilaian");
@@ -101,8 +114,10 @@ export default function HasilPage() {
           >
             Ulangi Penilaian
           </Button>
-          <Link href="/">
-            <Button variant="outline" className="w-full sm:w-auto">Kembali ke Beranda</Button>
+          <Link href="/" className="w-full sm:w-auto">
+            <Button variant="ghost" className="w-full sm:w-auto">
+              Kembali ke Beranda
+            </Button>
           </Link>
         </div>
       </div>
