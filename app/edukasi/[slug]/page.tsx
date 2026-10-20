@@ -10,7 +10,10 @@ import InteractiveFlowchart from "../components/InteractiveFlowchart";
 
 type Section = {
   title: string;
+  description?: string;
   content: string | string[] | { subtitle: string; text: string; isCategory?: boolean }[];
+  stackedItems?: boolean;
+  listAlpha?: boolean;
 };
 
 type EdukasiData = {
@@ -30,29 +33,32 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       "Jadi lebih jelasnya, Konflik sosial adalah ketegangan, ketidaksepakatan, dan pertentangan antara individu atau kelompok yang memiliki kepentingan atau nilai yang berbeda. Konflik sosial bisa terjadi dalam berbagai skala, mulai dari konflik antara individu di dalam keluarga hingga konflik antara kelompok etnis atau antar negara. Konflik sosial antara individu bisa berupa perselisihan keluarga, sementara konflik sosial antara kelompok bisa berupa persaingan ekonomi atau konflik agama. Konflik sosial juga dapat disebabkan oleh ketidakadilan sosial, perbedaan kelas, atau ketidakseimbangan kekuasaan di antara kelompok-kelompok yang terlibat."
     ],
     sections: [
+
       {
         title: "Ciri-Ciri Konflik Sosial",
         content: [
-          { subtitle: "1. Adanya Dua Pihak atau Lebih", text: "Melibatkan interaksi antara individu atau kelompok yang saling bertentangan." },
-          { subtitle: "2. Perbedaan yang Tajam", text: "Didorong oleh benturan nilai, norma, status, atau kepentingan materi." },
-          { subtitle: "3. Aksi Saling Menentang", text: "Adanya tindakan nyata untuk saling menjatuhkan atau merugikan pihak lawan." },
-          { subtitle: "4. Bersifat Dinamis", text: "Konflik memiliki siklus, mulai dari ketegangan tersembunyi hingga pecah menjadi tindakan terbuka." },
-          { subtitle: "5. Menimbulkan Dampak", text: "Selalu membawa konsekuensi, baik dampak negatif (kerusakan) maupun positif (solidaritas internal kelompok yang meningkat)." },
+          { subtitle: "1. Adanya Dua Pihak atau Lebih:", text: "Melibatkan interaksi antara individu atau kelompok yang saling bertentangan." },
+          { subtitle: "2. Perbedaan yang Tajam:", text: "Didorong oleh benturan nilai, norma, status, atau kepentingan materi." },
+          { subtitle: "3. Aksi Saling Menentang:", text: "Adanya tindakan nyata untuk saling menjatuhkan atau merugikan pihak lawan." },
+          { subtitle: "4. Bersifat Dinamis:", text: "Konflik memiliki siklus, mulai dari ketegangan tersembunyi hingga pecah menjadi tindakan terbuka." },
+          { subtitle: "5. Menimbulkan Dampak:", text: "Selalu membawa konsekuensi, baik dampak negatif (kerusakan) maupun positif (solidaritas internal kelompok yang meningkat)." },
         ],
       },
+
       {
         title: "Penyebab Terjadinya Konflik Sosial",
         content: [
-          { subtitle: "1. Perbedaan pendapat", text: "Perbedaan cara pandang terhadap suatu masalah dapat menimbulkan perselisihan." },
-          { subtitle: "2. Perbedaan kepentingan", text: "Setiap individu atau kelompok memiliki kebutuhan dan tujuan yang berbeda sehingga dapat terjadi pertentangan." },
-          { subtitle: "3. Perbedaan nilai dan budaya", text: "Keberagaman nilai, kebiasaan, dan budaya dapat menimbulkan perbedaan pemahaman apabila tidak disikapi dengan toleransi." },
-          { subtitle: "4. Kesalahpahaman", text: "Komunikasi yang kurang baik dapat menyebabkan seseorang salah memahami maksud atau tindakan orang lain." },
-          { subtitle: "5. Ketidakadilan", text: "Perlakuan yang dianggap tidak adil dapat menimbulkan rasa kecewa, ketidakpuasan, dan pertentangan." },
-          { subtitle: "6. Penyebaran informasi yang tidak benar", text: "Berita bohong atau informasi yang belum terbukti kebenarannya dapat memicu kesalahpahaman dan memperbesar konflik." },
+          { subtitle: "1. Perbedaan pendapat:", text: "Perbedaan cara pandang terhadap suatu masalah dapat menimbulkan perselisihan." },
+          { subtitle: "2. Perbedaan kepentingan:", text: "Setiap individu atau kelompok memiliki kebutuhan dan tujuan yang berbeda sehingga dapat terjadi pertentangan." },
+          { subtitle: "3. Perbedaan nilai dan budaya:", text: "Keberagaman nilai, kebiasaan, dan budaya dapat menimbulkan perbedaan pemahaman apabila tidak disikapi dengan toleransi." },
+          { subtitle: "4. Kesalahpahaman:", text: "Komunikasi yang kurang baik dapat menyebabkan seseorang salah memahami maksud atau tindakan orang lain." },
+          { subtitle: "5. Ketidakadilan:", text: "Perlakuan yang dianggap tidak adil dapat menimbulkan rasa kecewa, ketidakpuasan, dan pertentangan." },
+          { subtitle: "6. Penyebaran informasi yang tidak benar:", text: "Berita bohong atau informasi yang belum terbukti kebenarannya dapat memicu kesalahpahaman dan memperbesar konflik." },
         ],
       },
       {
         title: "Bentuk-bentuk Konflik Sosial",
+        stackedItems: true,
         content: [
           { subtitle: "A. Berdasarkan Sifat", text: "", isCategory: true },
           { subtitle: "1. Konflik Destruktif", text: "Konflik yang membawa akibat kurang menguntungkan bagi pihak yang berkonflik, yaitu mengakibatkan hilangnya nyawa atau harta benda, serta timbulnya persaingan, cemas, tegang, dan sebagainya." },
@@ -65,6 +71,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       },
       {
         title: "Dampak Konflik Sosial bagi Masyarakat",
+        description: "Konflik sosial dapat memiliki dampak yang sangat merusak pada individu, kelompok, dan masyarakat secara keseluruhan. Dikutip dari buku Sosiologi: Memahami dan Mengkaji Masyarakat oleh Janu Murdiyatmoko, berikut dampak dari konflik sosial.",
         content: [
           "Retaknya persatuan kelompok karena anggotanya saling berselisih.",
           "Menimbulkan aksi kekerasan, kerusuhan, dan penghancuran infrastruktur, bangunan, dan fasilitas umum.",
@@ -75,6 +82,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       },
       {
         title: "Contoh Konflik di Masyarakat",
+        stackedItems: true,
         content: [
           { subtitle: "a. Diskriminasi", text: "Membeda-bedakan orang lain berdasarkan latar belakang mereka. Faktor penyebab diskriminasi adalah pengetahuan akan keberagaman yang rendah dan sikap saling menghormati sesama yang buruk. Akibatnya adalah sikap rendah diri korban dan gangguan keharmonisan." },
           { subtitle: "b. Rasisme", text: "Merendahkan ras manusia tertentu. Faktor penyebab rasisme adalah kesadaran diri yang buruk, sikap egois, dan kurangnya rasa saling menyayangi. Mengakibatkan terhambatnya kerukunan antarmasyarakat." },
@@ -86,13 +94,15 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       },
       {
         title: "Tujuan Penanganan Konflik Sosial",
+        description: "Mengacu pada Pasal 3 UU No. 7 Tahun 2012, penanganan konflik bertujuan untuk:",
+        listAlpha: true,
         content: [
-          { subtitle: "a. Pasal 3 UU No. 7 Tahun 2012", text: "Menciptakan kehidupan masyarakat yang aman, tenteram, damai, dan sejahtera." },
-          { subtitle: "b. Harmoni", text: "Memelihara kondisi damai dan harmonis dalam hubungan sosial kemasyarakatan." },
-          { subtitle: "c. Toleransi", text: "Meningkatkan tenggang rasa dan toleransi dalam kehidupan bermasyarakat dan bernegara." },
-          { subtitle: "d. Fungsi Pemerintahan", text: "Memelihara fungsi pemerintahan berjalan secara normal." },
-          { subtitle: "e. HAM", text: "Melindungi hak asasi manusia (HAM) serta harta benda." },
-          { subtitle: "f. Partisipasi", text: "Meningkatkan partisipasi masyarakat dalam penyelesaian konflik secara damai." },
+          "Menciptakan kehidupan masyarakat yang aman, tenteram, damai, dan sejahtera.",
+          "Memelihara kondisi damai dan harmonis dalam hubungan sosial kemasyarakatan.",
+          "Meningkatkan tenggang rasa dan toleransi dalam kehidupan bermasyarakat dan bernegara.",
+          "Memelihara fungsi pemerintahan berjalan secara normal.",
+          "Melindungi hak asasi manusia (HAM) serta harta benda.",
+          "Meningkatkan partisipasi masyarakat dalam penyelesaian konflik secara damai.",
         ],
       },
     ],
@@ -299,6 +309,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
     sections: [
       {
         title: "Hal yang Dapat Dilakukan Generasi Muda",
+        stackedItems: true,
         content: [
           { subtitle: "1. Menjaga toleransi", text: "Bersikap terbuka dan menerima orang lain yang berbeda latar belakang tanpa memaksakan keseragaman." },
           { subtitle: "2. Menghargai keberagaman", text: "Memandang perbedaan sebagai kekayaan bangsa, bukan ancaman." },
@@ -317,14 +328,16 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
   },
 };
 
-function SectionContent({ content }: { content: string | string[] | { subtitle: string; text: string; isCategory?: boolean }[] }) {
+function SectionContent({ content, stacked, listAlpha }: { content: string | string[] | { subtitle: string; text: string; isCategory?: boolean }[]; stacked?: boolean; listAlpha?: boolean }) {
   if (typeof content === "string") {
     return <p className="text-sm leading-relaxed text-muted-foreground">{content}</p>;
   }
 
   if (Array.isArray(content) && typeof content[0] === "string") {
     return (
-      <ol className="list-decimal pl-4 space-y-2 text-muted-foreground marker:text-foreground marker:font-medium">
+      <ol className={`pl-5 space-y-1.5 text-muted-foreground ${
+        listAlpha ? "list-[lower-alpha]" : "list-decimal"
+      }`}>
         {(content as string[]).map((item, i) => (
           <li key={i} className="text-sm leading-relaxed pl-1">
             {item}
@@ -335,18 +348,28 @@ function SectionContent({ content }: { content: string | string[] | { subtitle: 
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-1.5">
       {(content as { subtitle: string; text: string; isCategory?: boolean }[]).map((item, i) => {
         if (item.isCategory) {
           return (
-            <p key={i} className="text-sm pt-2 pb-1 text-base text-gray-800">
+            <p key={i} className="text-sm pt-1 pb-0.5 text-base text-gray-800">
               {item.subtitle}
             </p>
           );
         }
+        if (stacked) {
+          return (
+            <div key={i}>
+              <p className="text-sm text-gray-800">{item.subtitle}</p>
+              {item.text && (
+                <p className="text-sm leading-snug text-muted-foreground pl-3">{item.text}</p>
+              )}
+            </div>
+          );
+        }
         return (
           <p key={i} className="text-sm leading-relaxed text-muted-foreground">
-            {item.subtitle} {item.text}
+            {item.subtitle}{item.text ? ` ${item.text}` : ""}
           </p>
         );
       })}
@@ -359,7 +382,8 @@ function SectionCard({ section }: { section: Section }) {
   return (
     <Card className="mb-4 shadow-sm border-gray-100">
       <CardHeader
-        className="cursor-pointer select-none bg-gray-50/50 hover:bg-gray-50 transition-colors py-4"
+        className="cursor-pointer select-none bg-gray-50/50 hover:bg-gray-50 transition-colors"
+        style={{ padding: '12px 16px' }}
         onClick={() => setOpen(!open)}
       >
         <CardTitle className="text-base flex items-center justify-between font-semibold text-gray-800">
@@ -372,8 +396,11 @@ function SectionCard({ section }: { section: Section }) {
         </CardTitle>
       </CardHeader>
       {open && (
-        <CardContent className="pt-4 animate-in slide-in-from-top-1 fade-in-20">
-          <SectionContent content={section.content} />
+        <CardContent style={{ padding: '6px 16px 16px' }} className="animate-in slide-in-from-top-1 fade-in-20">
+          {section.description && (
+            <p className="text-sm leading-relaxed text-muted-foreground mb-3">{section.description}</p>
+          )}
+          <SectionContent content={section.content} stacked={section.stackedItems} listAlpha={section.listAlpha} />
         </CardContent>
       )}
     </Card>
@@ -449,7 +476,7 @@ export default function EdukasiDetailPage({ params }: { params: Promise<{ slug: 
             ))
           )}
         </div>
-        
+
         <div className="mt-12 flex justify-center">
           <Link href="/edukasi">
             <Button variant="ghost" className="text-muted-foreground hover:text-foreground">

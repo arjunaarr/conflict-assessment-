@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -15,7 +16,25 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <header className="border-b bg-white sticky top-0 z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="font-bold text-lg">Penilaian Konflik</Link>
+          {/* Logo group kiri: Bakesbangpol + Unesa */}
+          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Halaman utama">
+            <Image
+              src="/logo-bakesbangpol.svg"
+              alt="Logo Badan Kesatuan Bangsa dan Politik Kota Surabaya"
+              width={40}
+              height={40}
+              className="rounded-full object-cover"
+              priority
+            />
+            <Image
+              src="/logo-unesa.jpeg"
+              alt="Logo Universitas Negeri Surabaya"
+              width={40}
+              height={40}
+              className="rounded-full object-cover"
+              priority
+            />
+          </Link>
           <nav className="hidden sm:flex gap-6 text-sm">
             <Link href="/edukasi" className="hover:text-primary">Edukasi</Link>
             <Link href="/simulasi" className="hover:text-primary">Simulasi</Link>
@@ -27,7 +46,7 @@ export default function HomePage() {
         <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-              Sistem Penilaian Potensi Konflik
+              Cek Potensi Konflik
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Lakukan penilaian awal terhadap indikator potensi konflik di lingkungan Anda melalui 15 pertanyaan sederhana.
@@ -122,7 +141,7 @@ export default function HomePage() {
 
       <footer className="border-t py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Sistem Penilaian Potensi Konflik
+          &copy; {new Date().getFullYear()} Cek Potensi Konflik
         </div>
       </footer>
     </div>
