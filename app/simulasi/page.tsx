@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { FlaskConical, MapPin, Calendar } from "lucide-react";
+import { FlaskConical, MapPin, Calendar, ArrowRight } from "lucide-react";
 
 const SIMULATIONS = [
   {
@@ -11,7 +12,6 @@ const SIMULATIONS = [
     location: "Surabaya",
     year: "2025",
     category: "Konflik Properti",
-    categoryColor: "bg-blue-100 text-blue-800",
     description:
       "Konflik antartetangga berujung penembokan jalan di Jalan Asem Jajar Gang III, Surabaya. Perselisihan mengenai kepemilikan dan penggunaan tanah yang menjadi akses jalan bersama.",
   },
@@ -21,7 +21,6 @@ const SIMULATIONS = [
     location: "Surabaya",
     year: "2025",
     category: "Konflik Sosial",
-    categoryColor: "bg-orange-100 text-orange-800",
     description:
       "Aksi penyampaian pendapat yang berkembang menjadi kericuhan. Demonstrasi yang awalnya tertib berubah menjadi kekerasan yang melibatkan 26 pelajar.",
   },
@@ -31,7 +30,6 @@ const SIMULATIONS = [
     location: "Surabaya",
     year: "2025",
     category: "Konflik Digital",
-    categoryColor: "bg-purple-100 text-purple-800",
     description:
       "Saling ejek melalui Live TikTok berujung perkelahian fisik antar remaja. Konflik digital yang berkembang menjadi kekerasan di dunia nyata.",
   },
@@ -41,7 +39,6 @@ const SIMULATIONS = [
     location: "Sukabumi",
     year: "2025",
     category: "Konflik Agama",
-    categoryColor: "bg-yellow-100 text-yellow-800",
     description:
       "Ketegangan terkait kegiatan keagamaan di Desa Tangkil. Perbedaan pandangan mengenai penggunaan vila untuk kegiatan keagamaan yang berujung perusakan.",
   },
@@ -51,7 +48,6 @@ const SIMULATIONS = [
     location: "Surabaya",
     year: "2026",
     category: "Konflik Hukum",
-    categoryColor: "bg-red-100 text-red-800",
     description:
       "Perselisihan Ruko di Jalan Krukah Utara melibatkan organisasi masyarakat. Dugaan intimidasi dan perusakan pagar dalam sengketa kepemilikan properti.",
   },
@@ -61,7 +57,6 @@ const SIMULATIONS = [
     location: "Batam",
     year: "2023-2024",
     category: "Konflik Agraria",
-    categoryColor: "bg-green-100 text-green-800",
     description:
       "Konflik antara masyarakat dan pemerintah terkait rencana pengembangan kawasan Rempang. Bentrokan terjadi saat pemasangan patok di kawasan yang akan dikembangkan.",
   },
@@ -71,7 +66,6 @@ const SIMULATIONS = [
     location: "Tanjungbalai, Sumatera Utara",
     year: "2016",
     category: "Konflik Agama & Etnis",
-    categoryColor: "bg-red-100 text-red-800",
     description:
       "Kerusuhan yang melibatkan keberagaman agama dan etnis serta penyebaran informasi melalui media sosial. Mengakibatkan penyerangan dan pembakaran rumah ibadah.",
   },
@@ -81,7 +75,6 @@ const SIMULATIONS = [
     location: "Bima, NTB",
     year: "2024",
     category: "Konflik Politik",
-    categoryColor: "bg-orange-100 text-orange-800",
     description:
       "Perusakan dan pembakaran TPS di Kecamatan Parado setelah Pemungutan Suara Ulang (PSU). Sebanyak 68 kotak suara dibakar dan 34 TPS menjadi sasaran.",
   },
@@ -91,7 +84,6 @@ const SIMULATIONS = [
     location: "Nasional",
     year: "2024",
     category: "Hoaks & Disinformasi",
-    categoryColor: "bg-gray-100 text-gray-800",
     description:
       "Video lama digunakan untuk membangun narasi seolah-olah terjadi kerusuhan baru, termasuk klaim bahwa kantor KPU, Bawaslu, dan kementerian dibakar.",
   },
@@ -101,7 +93,6 @@ const SIMULATIONS = [
     location: "Purworejo, Jawa Tengah",
     year: "2021-2022",
     category: "Konflik Agraria",
-    categoryColor: "bg-green-100 text-green-800",
     description:
       "Penolakan penambangan batu andesit di Desa Wadas untuk kebutuhan Bendungan Bener. Konflik antara masyarakat dengan pihak yang mendukung rencana penambangan.",
   },
@@ -109,57 +100,105 @@ const SIMULATIONS = [
 
 export default function SimulasiPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="flex items-center gap-2 mb-2">
-          <FlaskConical className="h-6 w-6 text-primary" />
-          <h1 className="text-2xl font-bold">Simulasi Kasus</h1>
+    <div className="flex flex-col min-h-screen bg-slate-50/50">
+      <header
+        className="border-b sticky top-0 z-50 bg-cover bg-center bg-no-repeat shadow-sm"
+        style={{ backgroundImage: "url('/bg_header.png')" }}
+      >
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Halaman utama">
+            <Image
+              src="/logo-bakesbangpol-web.png"
+              alt="Logo Badan Kesatuan Bangsa dan Politik Kota Surabaya"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain drop-shadow"
+              priority
+            />
+            <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center p-1 shadow-sm shrink-0">
+              <Image
+                src="/logo-unesa.png"
+                alt="Logo Universitas Negeri Surabaya"
+                width={36}
+                height={36}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
+          </Link>
+          <nav className="hidden sm:flex gap-6 text-sm font-medium">
+            <Link href="/" className="text-white/90 hover:text-white transition-colors">Beranda</Link>
+            <Link href="/edukasi" className="text-white/90 hover:text-white transition-colors">Edukasi</Link>
+            <Link href="/simulasi" className="text-white font-semibold">Simulasi</Link>
+          </nav>
         </div>
+      </header>
 
-        <p className="text-muted-foreground mb-8">
-          Pelajari 10 kasus konflik nyata yang terjadi di Indonesia. Setiap kasus dilengkapi dengan
-          pertanyaan simulasi untuk melatih kemampuan berpikir kritis dalam menghadapi situasi konflik.
-        </p>
+      <main className="flex-1">
+        <section className="border-b bg-white py-10 md:py-14">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="flex items-center gap-2 text-slate-600 mb-3 text-sm font-medium">
+              <FlaskConical className="h-4 w-4" />
+              <span>Studi Kasus & Analisis</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-3">
+              Simulasi Kasus Nyata
+            </h1>
+            <p className="text-slate-600 max-w-3xl leading-relaxed text-sm md:text-base">
+              Pelajari 10 kasus konflik nyata yang terjadi di Indonesia. Setiap kasus dilengkapi dengan pertanyaan simulasi untuk melatih kemampuan berpikir kritis dalam menghadapi situasi konflik di masyarakat.
+            </p>
+          </div>
+        </section>
 
-        <div className="grid gap-4">
-          {SIMULATIONS.map((sim) => (
-            <Card key={sim.id} className="hover:shadow-md transition-shadow">
-              <CardHeader>
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      <Badge className={sim.categoryColor}>{sim.category}</Badge>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <MapPin className="h-3 w-3" /> {sim.location}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Calendar className="h-3 w-3" /> {sim.year}
+        <section className="py-10 md:py-12">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="grid gap-4">
+              {SIMULATIONS.map((sim) => (
+                <Card
+                  key={sim.id}
+                  className="group border border-slate-200/80 hover:border-slate-300 hover:shadow-md transition-all duration-200 bg-white"
+                >
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Badge variant="outline" className="bg-slate-100 text-slate-700 border-slate-200 font-medium text-xs">
+                          {sim.category}
+                        </Badge>
+                        <span className="flex items-center gap-1 text-xs text-slate-500">
+                          <MapPin className="h-3 w-3" /> {sim.location}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-slate-500">
+                          <Calendar className="h-3 w-3" /> {sim.year}
+                        </span>
+                      </div>
+                      <span className="text-xs font-semibold text-slate-400 group-hover:text-slate-600 transition-colors">
+                        Kasus #{sim.id}
                       </span>
                     </div>
-                    <CardTitle className="text-base">
-                      Kasus {sim.id}: {sim.title}
+                    <CardTitle className="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors">
+                      {sim.title}
                     </CardTitle>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">{sim.description}</p>
-                <Link href={`/simulasi/${sim.id}`}>
-                  <Button variant="outline" size="sm">
-                    Pelajari Kasus
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <Link href="/">
-            <Button variant="ghost">Kembali ke Beranda</Button>
-          </Link>
-        </div>
-      </div>
+                  </CardHeader>
+                  <CardContent className="pt-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">
+                      {sim.description}
+                    </p>
+                    <Link href={`/simulasi/${sim.id}`} className="shrink-0">
+                      <Button
+                        variant="outline"
+                        className="w-full sm:w-auto text-slate-700 border-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium"
+                      >
+                        <span>Pelajari Kasus</span>
+                        <ArrowRight className="h-4 w-4 ml-1.5" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

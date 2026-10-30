@@ -14,30 +14,31 @@ const STEPS = [
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b bg-white sticky top-0 z-50">
+      <header className="border-b sticky top-0 z-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg_header.png')" }}>
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          {/* Logo group kiri: Bakesbangpol + Unesa */}
-          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Halaman utama">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Halaman utama">
             <Image
-              src="/logo-bakesbangpol.svg"
+              src="/logo-bakesbangpol-web.png"
               alt="Logo Badan Kesatuan Bangsa dan Politik Kota Surabaya"
               width={40}
               height={40}
-              className="rounded-full object-cover"
+              className="h-10 w-10 object-contain drop-shadow"
               priority
             />
-            <Image
-              src="/logo-unesa.jpeg"
-              alt="Logo Universitas Negeri Surabaya"
-              width={40}
-              height={40}
-              className="rounded-full object-cover"
-              priority
-            />
+            <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center p-1 shadow-sm shrink-0">
+              <Image
+                src="/logo-unesa.png"
+                alt="Logo Universitas Negeri Surabaya"
+                width={36}
+                height={36}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
           </Link>
           <nav className="hidden sm:flex gap-6 text-sm">
-            <Link href="/edukasi" className="hover:text-primary">Edukasi</Link>
-            <Link href="/simulasi" className="hover:text-primary">Simulasi</Link>
+            <Link href="/edukasi" className="text-white hover:text-white/80">Edukasi</Link>
+            <Link href="/simulasi" className="text-white hover:text-white/80">Simulasi</Link>
           </nav>
         </div>
       </header>

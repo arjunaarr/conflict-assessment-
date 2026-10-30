@@ -337,10 +337,10 @@ export default function IntroPage() {
         <div className="curtain">
           <div className="curtain-logo">
             <div style={{ borderRadius: "50%", overflow: "hidden", border: "3px solid rgba(255,255,255,.4)", boxShadow: "0 0 0 8px rgba(255,255,255,.1)" }}>
-              <Image src="/logo-bakesbangpol.svg" alt="Logo Bakesbangpol" width={80} height={80} />
+              <Image src="/logo-bakesbangpol-web.png" alt="Logo Bakesbangpol" width={80} height={80} />
             </div>
-            <div style={{ borderRadius: "50%", overflow: "hidden", border: "3px solid rgba(255,255,255,.4)", boxShadow: "0 0 0 8px rgba(255,255,255,.1)" }}>
-              <Image src="/logo-unesa.jpeg" alt="Logo Unesa" width={80} height={80} />
+            <div style={{ borderRadius: "50%", overflow: "hidden", border: "3px solid rgba(255,255,255,.4)", boxShadow: "0 0 0 8px rgba(255,255,255,.1)", backgroundColor: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", width: 80, height: 80, padding: 6 }}>
+              <Image src="/logo-unesa.png" alt="Logo Unesa" width={68} height={68} style={{ objectFit: "contain", width: "100%", height: "100%" }} />
             </div>
           </div>
         </div>
@@ -367,7 +367,7 @@ export default function IntroPage() {
               <div className={`logo-ring fade-item d0 ${slideState === "idle" ? "show" : ""}`}
                 style={{ width: "clamp(130px,20vw,200px)", height: "clamp(130px,20vw,200px)" }}>
                 <Image
-                  src="/logo-bakesbangpol.svg"
+                  src="/logo-bakesbangpol-web.png"
                   alt="Logo Badan Kesatuan Bangsa dan Politik Kota Surabaya"
                   width={200} height={200}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}

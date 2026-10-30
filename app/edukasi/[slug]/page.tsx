@@ -2,10 +2,11 @@
 
 import { useState, use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 import InteractiveFlowchart from "../components/InteractiveFlowchart";
 
 type Section = {
@@ -26,7 +27,7 @@ type EdukasiData = {
 const EDUCATION_DATA: Record<string, EdukasiData> = {
   "konflik-sosial": {
     title: "Konflik Sosial",
-    color: "bg-blue-100 text-blue-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Konflik sosial diatur secara khusus dalam Undang-Undang Nomor 7 Tahun 2012 tentang Penanganan Konflik Sosial (UU PKS), Berdasarkan Pasal 1 angka 1 UU No. 7 Tahun 2012, yang dimaksud dengan Konflik Sosial adalah:",
       "\"Perseteruan dan/atau benturan fisik dengan kekerasan antara dua kelompok masyarakat atau lebih yang berlangsung dalam waktu tertentu dan berdampak luas yang mengakibatkan ketidakamanan dan disintegrasi sosial sehingga mengganggu stabilitas nasional dan menghambat pembangunan nasional\"",
@@ -109,7 +110,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
   },
   "kewaspadaan-dini": {
     title: "Kewaspadaan Dini",
-    color: "bg-yellow-100 text-yellow-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Kewaspadaan dini adalah serangkaian upaya atau tindakan kepekaan, kesiagaan, dan antisipasi untuk mendeteksi serta mencegah segala potensi ancaman, tantangan, hambatan, dan gangguan (ATHG) sejak awal. Dalam kehidupan sehari-hari, kewaspadaan dini dapat dilakukan dengan memperhatikan perubahan situasi di lingkungan sekitar, mengenali munculnya perselisihan, serta memeriksa informasi yang diterima sebelum mempercayai atau menyebarkannya."
     ],
@@ -117,19 +118,19 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       {
         title: "Tiga Unsur Utama Kewaspadaan Dini",
         content: [
-          { subtitle: "1. Mengenali", text: "Peka terhadap gejala atau perubahan yang tidak biasa di lingkungan sekitar, seperti meningkatnya ketegangan antarwarga, beredarnya isu provokatif, atau munculnya ujaran kebencian." },
-          { subtitle: "2. Memahami", text: "Menganalisis penyebab, pihak yang terlibat, dan kemungkinan dampak dari tanda-tanda tersebut, bukan langsung berasumsi atau menghakimi." },
-          { subtitle: "3. Merespons", text: "Mengambil tindakan yang tepat dan cepat, seperti mendamaikan pihak yang berselisih, mengklarifikasi kabar bohong, atau melapor ke ketua RT/RW, tokoh masyarakat, atau aparat berwenang." },
+          { subtitle: "1. Mengenali:", text: "Peka terhadap gejala atau perubahan yang tidak biasa di lingkungan sekitar, seperti meningkatnya ketegangan antarwarga, beredarnya isu provokatif, atau munculnya ujaran kebencian." },
+          { subtitle: "2. Memahami:", text: "Menganalisis penyebab, pihak yang terlibat, dan kemungkinan dampak dari tanda-tanda tersebut, bukan langsung berasumsi atau menghakimi." },
+          { subtitle: "3. Merespons:", text: "Mengambil tindakan yang tepat dan cepat, seperti mendamaikan pihak yang berselisih, mengklarifikasi kabar bohong, atau melapor ke ketua RT/RW, tokoh masyarakat, atau aparat berwenang." },
         ],
       },
       {
         title: "Contoh Tanda Awal yang Perlu Diwaspadai",
         content: [
-          { subtitle: "1. Perselisihan kecil", text: "Perselisihan kecil antarwarga atau antarkelompok yang dibiarkan berlarut-larut." },
-          { subtitle: "2. Hoaks atau provokasi", text: "Beredarnya hoaks atau provokasi di media sosial atau grup pesan." },
-          { subtitle: "3. Sikap saling curiga", text: "Munculnya sikap saling curiga atau eksklusivitas kelompok." },
-          { subtitle: "4. Ketimpangan", text: "Ketimpangan atau ketidakadilan yang menimbulkan kekecewaan." },
-          { subtitle: "5. Orang mencurigakan", text: "Kehadiran orang tak dikenal dengan perilaku mencurigakan." },
+          { subtitle: "1. Perselisihan kecil antarwarga atau antarkelompok yang dibiarkan berlarut-larut.", text: "" },
+          { subtitle: "2. Beredarnya hoaks atau provokasi di media sosial atau grup pesan.", text: "" },
+          { subtitle: "3. Munculnya sikap saling curiga atau eksklusivitas kelompok.", text: "" },
+          { subtitle: "4. Ketimpangan atau ketidakadilan yang menimbulkan kekecewaan.", text: "" },
+          { subtitle: "5. Kehadiran orang tak dikenal dengan perilaku mencurigakan.", text: "" },
         ],
       },
       {
@@ -149,7 +150,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
   },
   "toleransi": {
     title: "Toleransi",
-    color: "bg-green-100 text-green-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Toleransi adalah sikap saling menghargai, menghormati, dan membolehkan segala perbedaan, baik berupa pandangan, pendapat, kepercayaan, kebiasaan, suku, maupun agama yang berbeda dari diri sendiri."
     ],
@@ -185,7 +186,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
   },
   "literasi-informasi": {
     title: "Literasi Informasi",
-    color: "bg-purple-100 text-purple-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Literasi informasi adalah kemampuan untuk mencari, memahami, menilai, menggunakan, dan menyampaikan informasi secara tepat dan bertanggung jawab. Kemampuan ini penting bagi generasi muda karena informasi dapat diperoleh dengan mudah melalui media sosial, internet, dan berbagai platform digital.",
       "Memiliki literasi informasi berarti tidak langsung percaya pada setiap informasi yang diterima. Sebelum mempercayai atau menyebarkannya, kita perlu memeriksa sumber, memahami konteks, membandingkan dengan sumber lain, dan memastikan kebenarannya. Hal ini dapat membantu mencegah penyebaran hoaks, kesalahpahaman, dan informasi yang berpotensi memicu konflik sosial."
@@ -194,38 +195,38 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       {
         title: "Kenali Fakta, Opini, dan Hoaks",
         content: [
-          { subtitle: "1. Fakta", text: "Informasi yang dapat dibuktikan kebenarannya melalui data, bukti, atau sumber yang terpercaya." },
-          { subtitle: "2. Opini", text: "Pendapat atau pandangan seseorang terhadap suatu hal. Opini dapat berbeda antara satu orang dengan orang lainnya." },
-          { subtitle: "3. Hoaks", text: "Informasi palsu atau menyesatkan yang disampaikan seolah-olah benar. Hoaks biasanya tidak memiliki sumber yang jelas atau bertentangan dengan fakta yang dapat diverifikasi." },
+          { subtitle: "1. Fakta :", text: "Informasi yang dapat dibuktikan kebenarannya melalui data, bukti, atau sumber yang terpercaya." },
+          { subtitle: "2. Opini :", text: "Pendapat atau pandangan seseorang terhadap suatu hal. Opini dapat berbeda antara satu orang dengan orang lainnya." },
+          { subtitle: "3. Hoaks :", text: "Informasi palsu atau menyesatkan yang disampaikan seolah-olah benar. Hoaks biasanya tidak memiliki sumber yang jelas atau bertentangan dengan fakta yang dapat diverifikasi." },
         ],
       },
       {
         title: "Mengapa Informasi Dapat Memicu Konflik?",
         content: [
-          { subtitle: "1. Memicu emosi dan amarah", text: "Kabar bohong yang menyentuh isu sensitif (SARA) mudah membuat orang bereaksi tanpa berpikir panjang." },
-          { subtitle: "2. Menumbuhkan prasangka dan kebencian", text: "Informasi yang menyudutkan satu kelompok membuat kelompok lain merasa curiga atau terancam." },
-          { subtitle: "3. Menyebar sangat cepat", text: "Media sosial dan grup pesan membuat satu kabar bohong dapat menjangkau ribuan orang dalam hitungan menit." },
-          { subtitle: "4. Sulit ditarik kembali", text: "Setelah tersebar, klarifikasi sering kalah cepat dan kalah viral dibanding kabar aslinya." },
-          { subtitle: "5. Dimanfaatkan pihak tertentu", text: "Ada pihak yang sengaja menyebarkan hoaks untuk memecah belah masyarakat." },
+          { subtitle: "1. Memicu emosi dan amarah :", text: "Kabar bohong yang menyentuh isu sensitif (SARA) mudah membuat orang bereaksi tanpa berpikir panjang." },
+          { subtitle: "2. Menumbuhkan prasangka dan kebencian :", text: "Informasi yang menyudutkan satu kelompok membuat kelompok lain merasa curiga atau terancam." },
+          { subtitle: "3. Menyebar sangat cepat :", text: "Media sosial dan grup pesan membuat satu kabar bohong dapat menjangkau ribuan orang dalam hitungan menit." },
+          { subtitle: "4. Sulit ditarik kembali :", text: "Setelah tersebar, klarifikasi sering kalah cepat dan kalah viral dibanding kabar aslinya." },
+          { subtitle: "5. Dimanfaatkan pihak tertentu :", text: "Ada pihak yang sengaja menyebarkan hoaks untuk memecah belah masyarakat." },
         ],
       },
       {
         title: "Cara Memeriksa Kebenaran Informasi",
         content: [
-          { subtitle: "1. Periksa sumbernya", text: "Apakah berasal dari media resmi, lembaga pemerintah, atau pakar yang kredibel? Waspadai akun anonim atau situs yang tidak dikenal." },
-          { subtitle: "2. Baca isi secara utuh", text: "Jangan hanya berhenti di judul, karena judul sering dibuat sensasional." },
-          { subtitle: "3. Cek tanggal dan konteks", text: "Kadang berita lama diunggah ulang seolah-olah baru terjadi." },
-          { subtitle: "4. Bandingkan dengan sumber lain", text: "Bila kabar itu benar dan penting, biasanya diberitakan oleh beberapa media tepercaya." },
-          { subtitle: "5. Periksa foto dan video", text: "Foto dapat diedit atau diambil dari peristiwa lain. Pencarian gambar terbalik (misalnya lewat Google Lens) dapat membantu menelusuri asal-usulnya." },
-          { subtitle: "6. Gunakan situs pengecek fakta", text: "Contohnya cekfakta.com, turnbackhoax.id, atau kanal hoaks di situs resmi Komdigi." },
-          { subtitle: "7. Tanyakan pada ahlinya", text: "Untuk informasi kesehatan, hukum, atau keagamaan, rujuklah pakar atau lembaga yang berwenang." },
+          { subtitle: "1. Periksa sumbernya :", text: "Apakah berasal dari media resmi, lembaga pemerintah, atau pakar yang kredibel? Waspadai akun anonim atau situs yang tidak dikenal." },
+          { subtitle: "2. Baca isi secara utuh :", text: "Jangan hanya berhenti di judul, karena judul sering dibuat sensasional." },
+          { subtitle: "3. Cek tanggal dan konteks :", text: "Kadang berita lama diunggah ulang seolah-olah baru terjadi." },
+          { subtitle: "4. Bandingkan dengan sumber lain :", text: "Bila kabar itu benar dan penting, biasanya diberitakan oleh beberapa media tepercaya." },
+          { subtitle: "5. Periksa foto dan video :", text: "Foto dapat diedit atau diambil dari peristiwa lain. Pencarian gambar terbalik (misalnya lewat Google Lens) dapat membantu menelusuri asal-usulnya." },
+          { subtitle: "6. Gunakan situs pengecek fakta :", text: "Contohnya cekfakta.com, turnbackhoax.id, atau kanal hoaks di situs resmi Komdigi." },
+          { subtitle: "7. Tanyakan pada ahlinya :", text: "Untuk informasi kesehatan, hukum, atau keagamaan, rujuklah pakar atau lembaga yang berwenang." },
         ],
       },
     ],
   },
   "musyawarah": {
     title: "Musyawarah",
-    color: "bg-indigo-100 text-indigo-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Musyawarah adalah proses membahas suatu persoalan secara bersama-sama untuk mencapai kesepakatan (mufakat) yang dapat diterima semua pihak. Setiap orang diberi kesempatan menyampaikan pendapat, dan keputusan diambil dengan mempertimbangkan kepentingan bersama, bukan kepentingan pribadi atau golongan."
     ],
@@ -233,44 +234,44 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       {
         title: "Prinsip-Prinsip dalam Musyawarah",
         content: [
-          { subtitle: "1. Mengutamakan kepentingan bersama", text: "Keputusan diambil demi kebaikan bersama, bukan keuntungan pribadi." },
-          { subtitle: "2. Memberi kesempatan yang sama", text: "Setiap peserta berhak menyampaikan pendapat tanpa dibeda-bedakan." },
-          { subtitle: "3. Mendengarkan dengan sungguh-sungguh", text: "Tidak memotong pembicaraan dan mau memahami sudut pandang orang lain." },
-          { subtitle: "4. Menyampaikan pendapat dengan santun", text: "Berbeda pendapat boleh, tetapi tidak dengan emosi, hinaan, atau paksaan." },
-          { subtitle: "5. Tidak memaksakan kehendak", text: "Tidak ada pihak yang boleh menekan atau mengintimidasi peserta lain." },
-          { subtitle: "6. Mengedepankan mufakat", text: "Keputusan diusahakan diambil dengan kesepakatan bersama. Bila tidak tercapai, dapat ditempuh pemungutan suara (voting) sebagai jalan terakhir." },
-          { subtitle: "7. Bertanggung jawab atas hasil", text: "Semua pihak ikut menjalankan dan menjaga keputusan yang telah disepakati." },
+          { subtitle: "1. Mengutamakan kepentingan bersama :", text: "Keputusan diambil demi kebaikan bersama, bukan keuntungan pribadi." },
+          { subtitle: "2. Memberi kesempatan yang sama :", text: "Setiap peserta berhak menyampaikan pendapat tanpa dibeda-bedakan." },
+          { subtitle: "3. Mendengarkan dengan sungguh-sungguh :", text: "Tidak memotong pembicaraan dan mau memahami sudut pandang orang lain." },
+          { subtitle: "4. Menyampaikan pendapat dengan santun :", text: "Berbeda pendapat boleh, tetapi tidak dengan emosi, hinaan, atau paksaan." },
+          { subtitle: "5. Tidak memaksakan kehendak :", text: "Tidak ada pihak yang boleh menekan atau mengintimidasi peserta lain." },
+          { subtitle: "6. Mengedepankan mufakat :", text: "Keputusan diusahakan diambil dengan kesepakatan bersama. Bila tidak tercapai, dapat ditempuh pemungutan suara (voting) sebagai jalan terakhir." },
+          { subtitle: "7. Bertanggung jawab atas hasil :", text: "Semua pihak ikut menjalankan dan menjaga keputusan yang telah disepakati." },
         ],
       },
       {
         title: "Cara Menyelesaikan Perbedaan melalui Musyawarah",
         content: [
-          { subtitle: "1. Kenali pokok masalah", text: "Pastikan semua pihak memahami apa yang sedang dibahas." },
-          { subtitle: "2. Kumpulkan pihak yang terlibat", text: "Hadirkan semua pihak yang berkepentingan agar tidak ada yang merasa diabaikan." },
-          { subtitle: "3. Sampaikan pendapat secara bergiliran", text: "Beri waktu yang adil bagi setiap peserta." },
-          { subtitle: "4. Dengarkan dan pahami", text: "Tanyakan bila ada yang kurang jelas, dan hindari menyimpulkan sebelum mendengar penjelasan lengkap." },
-          { subtitle: "5. Cari titik temu", text: "Identifikasi kesamaan dan pikirkan solusi yang dapat mengakomodasi kepentingan banyak pihak." },
-          { subtitle: "6. Kendalikan emosi", text: "Bila suasana memanas, ambil jeda sejenak atau libatkan penengah yang netral." },
-          { subtitle: "7. Ambil keputusan bersama", text: "Utamakan mufakat, dan gunakan pemungutan suara bila mufakat tidak tercapai." },
-          { subtitle: "8. Catat dan sepakati tindak lanjut", text: "Tentukan siapa melakukan apa agar keputusan benar-benar dijalankan." },
+          { subtitle: "1. Kenali pokok masalah :", text: "Pastikan semua pihak memahami apa yang sedang dibahas." },
+          { subtitle: "2. Kumpulkan pihak yang terlibat :", text: "Hadirkan semua pihak yang berkepentingan agar tidak ada yang merasa diabaikan." },
+          { subtitle: "3. Sampaikan pendapat secara bergiliran :", text: "Beri waktu yang adil bagi setiap peserta." },
+          { subtitle: "4. Dengarkan dan pahami :", text: "Tanyakan bila ada yang kurang jelas, dan hindari menyimpulkan sebelum mendengar penjelasan lengkap." },
+          { subtitle: "5. Cari titik temu :", text: "Identifikasi kesamaan dan pikirkan solusi yang dapat mengakomodasi kepentingan banyak pihak." },
+          { subtitle: "6. Kendalikan emosi :", text: "Bila suasana memanas, ambil jeda sejenak atau libatkan penengah yang netral." },
+          { subtitle: "7. Ambil keputusan bersama :", text: "Utamakan mufakat, dan gunakan pemungutan suara bila mufakat tidak tercapai." },
+          { subtitle: "8. Catat dan sepakati tindak lanjut :", text: "Tentukan siapa melakukan apa agar keputusan benar-benar dijalankan." },
         ],
       },
       {
         title: "Contoh Musyawarah dalam Kehidupan Generasi Muda",
         content: [
-          { subtitle: "1. Di kelas", text: "Menentukan pembagian tugas kelompok atau jadwal piket dengan mendengarkan usulan seluruh anggota." },
-          { subtitle: "2. Di OSIS atau organisasi kampus", text: "Merancang program kerja, menentukan tema kegiatan, dan memilih ketua panitia." },
-          { subtitle: "3. Di karang taruna atau komunitas", text: "Memutuskan kegiatan sosial, lomba, atau perayaan hari besar bersama warga." },
-          { subtitle: "4. Di ekskul atau tim olahraga", text: "Menyepakati aturan latihan dan strategi tim." },
-          { subtitle: "5. Di lingkungan pertemanan", text: "Memilih tempat berkumpul atau menyelesaikan salah paham antarteman tanpa bertengkar." },
-          { subtitle: "6. Di ruang digital", text: "Berdiskusi di grup pesan atau forum daring dengan bahasa santun dan tidak menyerang pribadi." },
+          { subtitle: "1. Di kelas :", text: "Menentukan pembagian tugas kelompok atau jadwal piket dengan mendengarkan usulan seluruh anggota." },
+          { subtitle: "2. Di OSIS atau organisasi kampus :", text: "Merancang program kerja, menentukan tema kegiatan, dan memilih ketua panitia." },
+          { subtitle: "3. Di karang taruna atau komunitas :", text: "Memutuskan kegiatan sosial, lomba, atau perayaan hari besar bersama warga." },
+          { subtitle: "4. Di ekskul atau tim olahraga :", text: "Menyepakati aturan latihan dan strategi tim." },
+          { subtitle: "5. Di lingkungan pertemanan :", text: "Memilih tempat berkumpul atau menyelesaikan salah paham antarteman tanpa bertengkar." },
+          { subtitle: "6. Di ruang digital :", text: "Berdiskusi di grup pesan atau forum daring dengan bahasa santun dan tidak menyerang pribadi." },
         ],
       },
     ],
   },
   "pencegahan-konflik": {
     title: "Pencegahan Konflik",
-    color: "bg-teal-100 text-teal-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Pencegahan konflik penting dilakukan karena konflik yang dibiarkan berkembang tanpa penanganan dapat mengganggu berbagai aspek kehidupan bermasyarakat."
     ],
@@ -289,19 +290,19 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       {
         title: "Mengenali Tanda-Tanda Situasi yang Berpotensi Menjadi Konflik",
         content: [
-          { subtitle: "1. Meningkatnya ketegangan", text: "Suasana menjadi tidak nyaman, muncul sikap saling curiga, dan interaksi menjadi kaku." },
-          { subtitle: "2. Kesalahpahaman yang berulang", text: "Perbedaan penafsiran yang tidak segera diluruskan, sehingga terus menumpuk." },
-          { subtitle: "3. Provokasi", text: "Ucapan, tindakan, atau konten yang sengaja dibuat untuk memancing kemarahan." },
-          { subtitle: "4. Penyebaran hoaks", text: "Kabar yang beredar cepat tanpa verifikasi dapat memicu kepanikan atau kemarahan." },
-          { subtitle: "5. Sikap intoleran", text: "Munculnya penolakan terhadap perbedaan yang ditunjukkan melalui ucapan merendahkan atau diskriminasi." },
-          { subtitle: "6. Perselisihan kecil yang dibiarkan", text: "Masalah yang sebenarnya sepele jika dibiarkan berlarut-larut dapat membesar." },
+          { subtitle: "1. Meningkatnya ketegangan antarindividu atau antarkelompok :", text: "Suasana menjadi tidak nyaman, muncul sikap saling curiga, dan interaksi yang biasanya cair menjadi kaku atau penuh kewaspadaan." },
+          { subtitle: "2. Kesalahpahaman yang berulang", text: "Perbedaan penafsiran terhadap suatu peristiwa, ucapan, atau tindakan yang tidak segera diluruskan, sehingga terus menumpuk dan memperbesar jarak antarpihak." },
+          { subtitle: "3. Provokasi", text: "Ucapan, tindakan, atau konten (termasuk di media sosial) yang sengaja dibuat untuk memancing kemarahan, memperuncing perbedaan, atau mengadu domba satu pihak dengan pihak lain." },
+          { subtitle: "4. Penyebaran informasi yang belum terbukti kebenarannya (hoaks)  ", text: "Kabar yang beredar cepat tanpa verifikasi dapat memicu kepanikan, kemarahan, atau kebencian terhadap kelompok tertentu secara tidak berdasar." },
+          { subtitle: "5. Sikap intoleran", text: "Mulai munculnya penolakan terhadap perbedaan, baik dalam hal suku, agama, ras, maupun pandangan, yang ditunjukkan melalui ucapan merendahkan, pengucilan, atau diskriminasi." },
+          { subtitle: "6. Perselisihan kecil yang tidak segera diselesaikan ", text: "Masalah yang sebenarnya sepele, jika dibiarkan berlarut-larut tanpa penyelesaian, dapat membesar dan melibatkan lebih banyak pihak." },
         ],
       },
     ],
   },
   "peran-generasi-muda": {
     title: "Peran Generasi Muda",
-    color: "bg-orange-100 text-orange-800",
+    color: "bg-slate-100 text-slate-800",
     intro: [
       "Generasi muda memiliki posisi yang sangat strategis dalam menjaga kerukunan bangsa. Selain jumlahnya besar dalam struktur demografi Indonesia, generasi muda juga tumbuh di tengah arus informasi dan teknologi yang berkembang pesat.",
       "Sikap dan kebiasaan yang dibangun sejak dini akan sangat memengaruhi wajah kerukunan sosial di masa mendatang. Generasi muda juga lebih mudah terpapar arus informasi, sehingga kemampuan menyaring informasi menjadi keterampilan krusial."
@@ -348,28 +349,28 @@ function SectionContent({ content, stacked, listAlpha }: { content: string | str
   }
 
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-2">
       {(content as { subtitle: string; text: string; isCategory?: boolean }[]).map((item, i) => {
         if (item.isCategory) {
           return (
-            <p key={i} className="text-sm pt-1 pb-0.5 text-base text-gray-800">
+            <p key={i} className="text-sm pt-2 pb-1 font-semibold text-slate-900">
               {item.subtitle}
             </p>
           );
         }
         if (stacked) {
           return (
-            <div key={i}>
-              <p className="text-sm text-gray-800">{item.subtitle}</p>
+            <div key={i} className="space-y-0.5">
+              <p className="text-sm text-slate-800">{item.subtitle}</p>
               {item.text && (
-                <p className="text-sm leading-snug text-muted-foreground pl-3">{item.text}</p>
+                <p className="text-sm leading-relaxed text-slate-600 pl-3">{item.text}</p>
               )}
             </div>
           );
         }
         return (
-          <p key={i} className="text-sm leading-relaxed text-muted-foreground">
-            {item.subtitle}{item.text ? ` ${item.text}` : ""}
+          <p key={i} className="text-sm leading-relaxed text-slate-700">
+            {item.subtitle}{item.subtitle && item.text ? " " : ""}{item.text}
           </p>
         );
       })}
@@ -380,25 +381,25 @@ function SectionContent({ content, stacked, listAlpha }: { content: string | str
 function SectionCard({ section }: { section: Section }) {
   const [open, setOpen] = useState(true);
   return (
-    <Card className="mb-4 shadow-sm border-gray-100">
+    <Card className="shadow-sm border border-slate-200/80 bg-white rounded-xl overflow-hidden">
       <CardHeader
-        className="cursor-pointer select-none bg-gray-50/50 hover:bg-gray-50 transition-colors"
-        style={{ padding: '12px 16px' }}
+        className="cursor-pointer select-none bg-slate-50/60 hover:bg-slate-100/80 transition-colors"
+        style={{ padding: '14px 18px' }}
         onClick={() => setOpen(!open)}
       >
-        <CardTitle className="text-base flex items-center justify-between font-semibold text-gray-800">
+        <CardTitle className="text-base flex items-center justify-between font-semibold text-slate-800">
           {section.title}
           {open ? (
-            <ChevronUp className="h-5 w-5 text-gray-400" />
+            <ChevronUp className="h-5 w-5 text-slate-400 shrink-0" />
           ) : (
-            <ChevronDown className="h-5 w-5 text-gray-400" />
+            <ChevronDown className="h-5 w-5 text-slate-400 shrink-0" />
           )}
         </CardTitle>
       </CardHeader>
       {open && (
-        <CardContent style={{ padding: '6px 16px 16px' }} className="animate-in slide-in-from-top-1 fade-in-20">
+        <CardContent style={{ padding: '8px 18px 18px' }} className="animate-in slide-in-from-top-1 fade-in-20">
           {section.description && (
-            <p className="text-sm leading-relaxed text-muted-foreground mb-3">{section.description}</p>
+            <p className="text-sm leading-relaxed text-slate-600 mb-3">{section.description}</p>
           )}
           <SectionContent content={section.content} stacked={section.stackedItems} listAlpha={section.listAlpha} />
         </CardContent>
@@ -423,46 +424,83 @@ export default function EdukasiDetailPage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <div className="min-h-screen bg-gray-50/80 pb-12">
-      <div className="bg-white border-b sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4 max-w-3xl flex items-center">
+    <div className="min-h-screen bg-slate-50/60 pb-16 flex flex-col">
+      <header
+        className="border-b sticky top-0 z-50 bg-cover bg-center bg-no-repeat shadow-sm"
+        style={{ backgroundImage: "url('/bg_header.png')" }}
+      >
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Halaman utama">
+            <Image
+              src="/logo-bakesbangpol-web.png"
+              alt="Logo Badan Kesatuan Bangsa dan Politik Kota Surabaya"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain drop-shadow"
+              priority
+            />
+            <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center p-1 shadow-sm shrink-0">
+              <Image
+                src="/logo-unesa.png"
+                alt="Logo Universitas Negeri Surabaya"
+                width={36}
+                height={36}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
+          </Link>
+          <nav className="hidden sm:flex gap-6 text-sm font-medium">
+            <Link href="/" className="text-white/90 hover:text-white transition-colors">Beranda</Link>
+            <Link href="/edukasi" className="text-white font-semibold">Edukasi</Link>
+            <Link href="/simulasi" className="text-white/90 hover:text-white transition-colors">Simulasi</Link>
+          </nav>
+        </div>
+      </header>
+
+      <div className="bg-white border-b sticky top-16 z-40">
+        <div className="container mx-auto px-4 py-3 max-w-4xl flex items-center justify-between">
           <Link
             href="/edukasi"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+            className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium"
           >
-            <ArrowLeft className="h-4 w-4" /> Daftar Materi
+            <ArrowLeft className="h-4 w-4" /> Kembali ke Daftar Modul
           </Link>
+          <div className="hidden sm:flex items-center gap-1 text-xs text-slate-500">
+            <BookOpen className="h-3.5 w-3.5" />
+            <span>Materi Edukasi</span>
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-8 max-w-4xl flex-1">
         {/* Header */}
-        <div className="mb-8">
-          <Badge className={`${data.color} w-fit mb-4 px-3 py-1 text-xs font-semibold`}>
-            Materi Pembelajaran
+        <div className="mb-6">
+          <Badge variant="outline" className="bg-slate-100 text-slate-700 border-slate-200 font-medium text-xs mb-3">
+            Modul Pembelajaran
           </Badge>
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight leading-tight">{data.title}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-tight">{data.title}</h1>
         </div>
 
         {/* Intro */}
-        <Card className="mb-8 border-l-4 border-l-primary shadow-sm border-r-0 border-t-0 border-b-0 bg-white rounded-r-xl">
-          <CardContent className="pt-6 pb-6">
+        <Card className="mb-8 border border-slate-200/80 shadow-sm bg-white rounded-xl">
+          <CardContent className="p-6">
             <div className="space-y-4">
               {Array.isArray(data.intro) ? (
                 data.intro.map((paragraph, idx) => (
-                  <p key={idx} className="text-base leading-relaxed text-gray-700">
+                  <p key={idx} className="text-sm sm:text-base leading-relaxed text-slate-700">
                     {paragraph}
                   </p>
                 ))
               ) : (
-                <p className="text-base leading-relaxed text-gray-700">{data.intro}</p>
+                <p className="text-sm sm:text-base leading-relaxed text-slate-700">{data.intro}</p>
               )}
             </div>
           </CardContent>
         </Card>
 
         {/* Sections */}
-        <div className="space-y-1">
+        <div className="space-y-3">
           {slug === "pencegahan-konflik" ? (
             <>
               {data.sections.map((section, i) => (
@@ -479,8 +517,8 @@ export default function EdukasiDetailPage({ params }: { params: Promise<{ slug: 
 
         <div className="mt-12 flex justify-center">
           <Link href="/edukasi">
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
-              ← Kembali ke Daftar Materi
+            <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium">
+              <ArrowLeft className="h-4 w-4 mr-2" /> Kembali ke Daftar Edukasi
             </Button>
           </Link>
         </div>

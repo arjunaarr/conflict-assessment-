@@ -2,10 +2,11 @@
 
 import { useState, use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, MapPin, Calendar, MessageSquare, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Calendar, MessageSquare, ChevronDown, ChevronUp, BookOpen, FlaskConical, CheckCircle2 } from "lucide-react";
 
 const SIMULATIONS: Record<
   string,
@@ -27,7 +28,7 @@ const SIMULATIONS: Record<
     location: "Jalan Asem Jajar Gang III, Tembok Dukuh, Surabaya",
     year: "2025",
     category: "Konflik Properti",
-    categoryColor: "bg-blue-100 text-blue-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini terjadi di Jalan Asem Jajar Gang III, Tembok Dukuh, Surabaya. Konflik melibatkan warga yang berselisih mengenai kepemilikan dan penggunaan tanah yang menjadi akses jalan bersama.
 
 Menurut pemberitaan detikJatim, persoalan tersebut berawal dari konflik yang sudah berlangsung sejak sekitar 2011 dan berkaitan dengan urusan ahli waris, pembelian tanah warisan, serta dugaan kerancuan dalam proses jual beli tanah. Salah satu warga berinisial SH merasa sebagian tanah yang digunakan sebagai jalan merupakan bagian dari tanah miliknya. Sementara itu, beberapa tetangga merasa bahwa mereka telah membeli tanah dengan lebar sekitar satu meter untuk digunakan sebagai jalan bersama.
@@ -49,7 +50,7 @@ Perselisihan tersebut kemudian mendapatkan perhatian Pemerintah Kota Surabaya. W
     location: "Gedung Negara Grahadi, Surabaya",
     year: "29–30 Agustus 2025",
     category: "Konflik Sosial",
-    categoryColor: "bg-orange-100 text-orange-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini terjadi di Surabaya pada 29–30 Agustus 2025. Aksi tersebut merupakan bagian dari respons terhadap meninggalnya seorang laki-laki berinisial AK berumur 21 tahun, pengemudi ojek online yang meninggal setelah terlindas kendaraan taktis Brimob dalam kericuhan demonstrasi di Jakarta.
 
 Di Surabaya, massa yang menamakan diri Solidaritas AK melakukan aksi dan bergerak menuju Gedung Negara Grahadi. Pada awalnya, massa melakukan aksi dengan long march dan menyampaikan aspirasi. Namun, situasi kemudian berubah ketika sebagian massa mencoba menerobos pagar, melempar batu dan botol ke arah aparat serta Gedung Grahadi.
@@ -71,7 +72,7 @@ Kericuhan tidak hanya berdampak kepada peserta aksi dan aparat. Sejumlah ruas ja
     location: "Kantor Pemerintah Kota Surabaya",
     year: "28 Januari 2025",
     category: "Konflik Digital",
-    categoryColor: "bg-purple-100 text-purple-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini terjadi di Surabaya pada 28 Januari 2025. Satpol PP Kota Surabaya mengamankan tiga anak perempuan di bawah umur yang terlibat perkelahian.
 
 Menurut keterangan resmi Satpol PP Kota Surabaya, perkelahian tersebut berkaitan dengan saling ejek melalui siaran langsung (live) TikTok. Perselisihan yang awalnya terjadi di ruang digital kemudian berkembang hingga ketiga anak tersebut bertemu secara langsung dan terlibat perkelahian di depan Kantor Pemerintah Kota Surabaya.
@@ -93,7 +94,7 @@ Kasus ini memperlihatkan bagaimana interaksi di media sosial dapat berkembang me
     location: "Desa Tangkil, Kecamatan Cidahu, Kabupaten Sukabumi, Jawa Barat",
     year: "2025",
     category: "Konflik Agama",
-    categoryColor: "bg-yellow-100 text-yellow-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini terjadi di Desa Tangkil, Kecamatan Cidahu, Kabupaten Sukabumi, Jawa Barat, pada 2025. Persoalan tersebut berkaitan dengan penggunaan sebuah vila untuk kegiatan keagamaan dan menimbulkan ketegangan antara sebagian warga dengan kelompok yang melakukan kegiatan tersebut.
 
 Persoalan kemudian berkembang menjadi insiden yang lebih serius. Dalam pemberitaan dan laporan mengenai kasus tersebut, terdapat perbedaan pandangan mengenai kegiatan yang dilakukan serta kekhawatiran sebagian masyarakat terhadap aktivitas keagamaan di lingkungan mereka. Situasi yang tidak terselesaikan kemudian berujung pada tindakan perusakan terhadap tempat yang digunakan untuk kegiatan tersebut.
@@ -113,7 +114,7 @@ Kasus ini mendapat perhatian karena menyangkut kebebasan beragama dan berkeyakin
     location: "Jalan Krukah Utara Nomor 34, Kecamatan Wonokromo, Surabaya",
     year: "22 Juli 2026",
     category: "Konflik Hukum",
-    categoryColor: "bg-red-100 text-red-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini terjadi di Jalan Krukah Utara Nomor 34, Kecamatan Wonokromo, Surabaya, pada 22 Juli 2026. Peristiwa tersebut menjadi perhatian setelah video kedatangan puluhan orang ke sebuah ruko beredar di media sosial.
 
 Menurut pemberitaan detikJatim, puluhan orang yang diduga berasal dari sebuah organisasi masyarakat datang ke ruko tersebut. Dalam rekaman yang beredar, terdapat dugaan intimidasi, perusakan pagar, dan adu dorong antara massa dengan pemilik ruko serta warga yang berada di lokasi. Peristiwa tersebut diketahui terjadi sekitar pukul 14.30 WIB.
@@ -135,7 +136,7 @@ Kasus tersebut kemudian dibawa ke jalur hukum. Pemilik ruko melaporkan kejadian 
     location: "Pulau Rempang, Batam",
     year: "2023–2024",
     category: "Konflik Agraria",
-    categoryColor: "bg-green-100 text-green-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Pulau Rempang, Batam, menjadi lokasi konflik antara masyarakat dan pemerintah terkait rencana pengembangan kawasan Rempang. Konflik tersebut berkaitan dengan rencana pengembangan kawasan yang berdampak pada masyarakat yang telah lama tinggal di wilayah tersebut.
 
 Pada September 2023, terjadi bentrokan ketika aparat melakukan pengamanan terkait proses pengukuran dan pemasangan patok di kawasan yang akan dikembangkan. Peristiwa tersebut kemudian menimbulkan ketegangan antara sebagian masyarakat dengan aparat.
@@ -155,7 +156,7 @@ Persoalan tersebut terus menjadi perhatian pada 2024. Komnas HAM menyatakan bahw
     location: "Kota Tanjungbalai, Sumatera Utara",
     year: "29 Juli 2016",
     category: "Konflik Agama & Etnis",
-    categoryColor: "bg-red-100 text-red-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus Tanjungbalai merupakan salah satu contoh konflik sosial yang berhubungan dengan keberagaman agama dan etnis serta penyebaran informasi melalui media sosial. Peristiwa tersebut terjadi pada 29 Juli 2016 di Kota Tanjungbalai, Sumatera Utara.
 
 Menurut pemantauan Komnas HAM, persoalan bermula ketika seorang warga menyampaikan keberatan mengenai suara pengeras suara dari sebuah rumah ibadah. Persoalan tersebut kemudian berkembang setelah informasi mengenai kejadian tersebut menyebar dan muncul dugaan provokasi melalui media sosial.
@@ -177,7 +178,7 @@ Dalam rekomendasinya, Komnas HAM menekankan pentingnya memutus penyebaran komuni
     location: "Kecamatan Parado, Kabupaten Bima, Nusa Tenggara Barat",
     year: "Februari 2024",
     category: "Konflik Politik",
-    categoryColor: "bg-orange-100 text-orange-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini terjadi setelah pelaksanaan Pemungutan Suara Ulang (PSU) di Kecamatan Parado, Kabupaten Bima, Nusa Tenggara Barat, pada Februari 2024. Komnas HAM mencatat adanya konflik sosial setelah proses pemilu sebelumnya.
 
 Dalam peristiwa tersebut, sejumlah TPS menjadi sasaran perusakan dan pembakaran. Berdasarkan informasi yang diperoleh Komnas HAM dari kepolisian, kejadian tersebut berlangsung pada malam hari. Pelaku juga membawa senjata tajam.
@@ -199,7 +200,7 @@ Akibat kejadian tersebut, wilayah yang sebelumnya tidak dikategorikan rawan kemu
     location: "Nasional",
     year: "1 Maret 2024",
     category: "Hoaks & Disinformasi",
-    categoryColor: "bg-gray-100 text-gray-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Kasus ini menunjukkan bahwa informasi palsu dapat menjadi pemicu ketegangan di masyarakat. Pada 1 Maret 2024, Kementerian Komunikasi dan Digital (saat itu Kominfo) memberikan klarifikasi terhadap sebuah video yang beredar di YouTube.
 
 Video tersebut diberi narasi seolah-olah menunjukkan kerusuhan yang terjadi pada 28 Februari 2024, termasuk klaim bahwa kantor KPU, Bawaslu, dan sejumlah kementerian telah dibakar sehingga pemerintahan lumpuh.
@@ -221,7 +222,7 @@ Kasus ini penting karena informasi yang salah mengenai kerusuhan dapat menimbulk
     location: "Desa Wadas, Kecamatan Bener, Kabupaten Purworejo, Jawa Tengah",
     year: "2021–2022",
     category: "Konflik Agraria",
-    categoryColor: "bg-green-100 text-green-800",
+    categoryColor: "bg-slate-100 text-slate-700 border-slate-200",
     scenario: `Desa Wadas, Kecamatan Bener, Kabupaten Purworejo, Jawa Tengah, pernah mengalami konflik antara sebagian warga dengan pihak yang mendukung rencana penambangan batu andesit untuk kebutuhan pembangunan Bendungan Bener.
 
 Sebagian warga menolak rencana penambangan karena khawatir terhadap dampaknya terhadap lingkungan dan keberlangsungan kehidupan masyarakat. Menurut laporan Komnas HAM, warga juga menyampaikan persoalan mengenai kurangnya sosialisasi dan keterlibatan mereka dalam proses yang berkaitan dengan rencana tersebut.
@@ -256,57 +257,103 @@ export default function SimulasiDetailPage({ params }: { params: Promise<{ id: s
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
-        <Link
-          href="/simulasi"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
-        >
-          <ArrowLeft className="h-4 w-4" /> Kembali ke Daftar Simulasi
-        </Link>
+    <div className="min-h-screen bg-slate-50/60 pb-16 flex flex-col">
+      <header
+        className="border-b sticky top-0 z-50 bg-cover bg-center bg-no-repeat shadow-sm"
+        style={{ backgroundImage: "url('/bg_header.png')" }}
+      >
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Halaman utama">
+            <Image
+              src="/logo-bakesbangpol-web.png"
+              alt="Logo Badan Kesatuan Bangsa dan Politik Kota Surabaya"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain drop-shadow"
+              priority
+            />
+            <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center p-1 shadow-sm shrink-0">
+              <Image
+                src="/logo-unesa.png"
+                alt="Logo Universitas Negeri Surabaya"
+                width={36}
+                height={36}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
+          </Link>
+          <nav className="hidden sm:flex gap-6 text-sm font-medium">
+            <Link href="/" className="text-white/90 hover:text-white transition-colors">Beranda</Link>
+            <Link href="/edukasi" className="text-white/90 hover:text-white transition-colors">Edukasi</Link>
+            <Link href="/simulasi" className="text-white font-semibold">Simulasi</Link>
+          </nav>
+        </div>
+      </header>
 
+      <div className="bg-white border-b sticky top-16 z-40">
+        <div className="container mx-auto px-4 py-3 max-w-4xl flex items-center justify-between">
+          <Link
+            href="/simulasi"
+            className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium"
+          >
+            <ArrowLeft className="h-4 w-4" /> Kembali ke Daftar Simulasi
+          </Link>
+          <div className="hidden sm:flex items-center gap-1 text-xs text-slate-500">
+            <FlaskConical className="h-3.5 w-3.5" />
+            <span>Studi Kasus #{data.id}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8 max-w-4xl flex-1">
         {/* Header */}
         <div className="mb-6">
-          <div className="flex flex-wrap gap-2 mb-3">
-            <Badge className={data.categoryColor}>{data.category}</Badge>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <Badge variant="outline" className={data.categoryColor}>
+              {data.category}
+            </Badge>
+            <span className="flex items-center gap-1 text-xs text-slate-500">
               <MapPin className="h-3 w-3" /> {data.location}
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-slate-500">
               <Calendar className="h-3 w-3" /> {data.year}
             </span>
           </div>
-          <h1 className="text-2xl font-bold">
-            Kasus {data.id}: {data.title}
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-tight">
+            Kasus #{data.id}: {data.title}
           </h1>
         </div>
 
         {/* Scenario */}
-        <Card className="mb-4">
-          <CardHeader>
-            <CardTitle className="text-base flex items-center gap-2">
-              <BookOpen className="h-4 w-4" />
+        <Card className="mb-5 border border-slate-200/80 shadow-sm bg-white rounded-xl overflow-hidden">
+          <CardHeader className="bg-slate-50/70 border-b border-slate-100 py-3.5 px-6">
+            <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
+              <BookOpen className="h-4 w-4 text-slate-700" />
               Skenario Kasus
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+          <CardContent className="p-6">
+            <div className="text-sm sm:text-base text-slate-700 whitespace-pre-line leading-relaxed">
               {data.scenario}
             </div>
           </CardContent>
         </Card>
 
         {/* Key Points */}
-        <Card className="mb-4">
-          <CardHeader>
-            <CardTitle className="text-base">Poin Kunci</CardTitle>
+        <Card className="mb-5 border border-slate-200/80 shadow-sm bg-white rounded-xl overflow-hidden">
+          <CardHeader className="bg-slate-50/70 border-b border-slate-100 py-3.5 px-6">
+            <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-slate-700" />
+              Poin Kunci Kasus
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <ul className="space-y-2">
+          <CardContent className="p-6">
+            <ul className="space-y-3">
               {data.keyPoints.map((point, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  {point}
+                <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-slate-700">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-slate-900 shrink-0" />
+                  <span className="leading-relaxed">{point}</span>
                 </li>
               ))}
             </ul>
@@ -314,31 +361,33 @@ export default function SimulasiDetailPage({ params }: { params: Promise<{ id: s
         </Card>
 
         {/* Simulation Question */}
-        <Card className="border-primary/30 bg-primary/5">
+        <Card className="border border-slate-300 shadow-sm bg-white rounded-xl overflow-hidden">
           <CardHeader
-            className="cursor-pointer select-none"
+            className="cursor-pointer select-none bg-slate-100 hover:bg-slate-200/70 transition-colors py-4 px-6"
             onClick={() => setShowQuestion(!showQuestion)}
           >
-            <CardTitle className="text-base flex items-center justify-between">
+            <CardTitle className="text-base font-semibold text-slate-900 flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <MessageSquare className="h-4 w-4 text-primary" />
-                Pertanyaan Simulasi
+                <MessageSquare className="h-4 w-4 text-slate-800" />
+                Pertanyaan Simulasi & Refleksi
               </span>
               {showQuestion ? (
-                <ChevronUp className="h-4 w-4 text-muted-foreground" />
+                <ChevronUp className="h-4 w-4 text-slate-500" />
               ) : (
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                <ChevronDown className="h-4 w-4 text-slate-500" />
               )}
             </CardTitle>
           </CardHeader>
           {showQuestion && (
-            <CardContent>
-              <p className="text-sm leading-relaxed">{data.question}</p>
+            <CardContent className="p-6 animate-in slide-in-from-top-1 fade-in-20">
+              <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                {data.question}
+              </p>
             </CardContent>
           )}
           {!showQuestion && (
-            <CardContent>
-              <p className="text-xs text-muted-foreground italic">
+            <CardContent className="py-4 px-6">
+              <p className="text-xs text-slate-500 italic">
                 Klik untuk menampilkan pertanyaan simulasi dan renungkan jawabanmu.
               </p>
             </CardContent>
@@ -346,11 +395,11 @@ export default function SimulasiDetailPage({ params }: { params: Promise<{ id: s
         </Card>
 
         {/* Navigation */}
-        <div className="flex justify-between mt-6">
+        <div className="flex justify-between items-center mt-8 pt-4 border-t border-slate-200">
           {parseInt(id) > 1 ? (
             <Link href={`/simulasi/${parseInt(id) - 1}`}>
-              <Button variant="outline" size="sm">
-                ← Kasus Sebelumnya
+              <Button variant="outline" className="text-slate-700 border-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium">
+                <ArrowLeft className="h-4 w-4 mr-1.5" /> Kasus Sebelumnya
               </Button>
             </Link>
           ) : (
@@ -358,8 +407,8 @@ export default function SimulasiDetailPage({ params }: { params: Promise<{ id: s
           )}
           {parseInt(id) < 10 ? (
             <Link href={`/simulasi/${parseInt(id) + 1}`}>
-              <Button variant="outline" size="sm">
-                Kasus Berikutnya →
+              <Button variant="outline" className="text-slate-700 border-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium">
+                Kasus Berikutnya <ArrowRight className="h-4 w-4 ml-1.5" />
               </Button>
             </Link>
           ) : (

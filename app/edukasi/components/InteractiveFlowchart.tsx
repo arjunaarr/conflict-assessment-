@@ -260,11 +260,9 @@ export default function InteractiveFlowchart() {
                     onClick={() => setActiveStep(step.id)}
                     className={`w-36 sm:w-44 md:w-48 h-28 p-3 rounded-lg border-2 text-left transition-all duration-300 flex flex-col justify-center items-center text-center
                       ${isActive
-                        ? "border-primary ring-4 ring-primary/20 scale-105 shadow-xl z-10"
-                        : step.id === 7
-                          ? "border-amber-700/40 hover:border-amber-600 hover:shadow-md hover:-translate-y-1"
-                          : "border-emerald-700/40 hover:border-emerald-600 hover:shadow-md hover:-translate-y-1"}
-                      ${step.id === 7 ? "bg-orange-50" : "bg-emerald-50/80"}
+                        ? "border-slate-900 ring-4 ring-slate-900/20 scale-105 shadow-xl z-10"
+                        : "border-slate-300 hover:border-slate-500 hover:shadow-md hover:-translate-y-1"}
+                      bg-white
                     `}
                   >
                     <span className="font-bold text-sm text-gray-900 mb-1">{step.title}</span>
