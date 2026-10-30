@@ -9,26 +9,32 @@ import type { NextRequest } from "next/server";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Only intercept the root path
-  if (pathname === "/") {
-    const introSeen = request.cookies.get("intro_seen");
+  // Skip jika bukan root path (anti-loop)
+  if (pathname !== "/") return NextResponse.next();
 
-    if (!introSeen) {
-      // First visit — send to intro page
-      return NextResponse.redirect(new URL("/intro", request.url));
-    }
-  }
+  const introSeen = request.cookies.get("intro_seen");
 
-  // All other requests pass through normally
-  return NextResponse.next();
+  // Sudah lihat intro → lanjut normal
+  if (introSeen) return NextResponse.next();
+
+  // Belum lihat intro → redirect ke /intro
+  const url = request.nextUrl.clone();
+  url.pathname = "/intro";
+  return NextResponse.redirect(url);
 }
 
 export const config = {
   matcher: [
     /*
-     * Match only the root path /.
-     * Exclude API routes, Next.js internals, static files and assets.
+     * Hanya cocokkan root path /.
+     * Exclude prefetch Next.js agar tidak loop saat Link hover.
      */
-    "/",
+    {
+      source: "/",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
   ],
 };
