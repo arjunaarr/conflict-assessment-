@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Shield, ClipboardList, BookOpen, AlertTriangle } from "lucide-react";
+import IntroGate from "@/components/IntroGate";
 
 const STEPS = [
   { icon: ClipboardList, title: "Jawab 15 Pertanyaan", desc: "Jawab pertanyaan dengan Ya atau Tidak sesuai kondisi yang Anda amati." },
@@ -14,6 +15,8 @@ const STEPS = [
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Cek sessionStorage — redirect ke /intro jika sesi baru */}
+      <IntroGate />
       <header className="border-b sticky top-0 z-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg_header.png')" }}>
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Halaman utama">

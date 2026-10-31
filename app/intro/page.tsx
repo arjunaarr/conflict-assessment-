@@ -39,7 +39,8 @@ export default function IntroPage() {
     // Drop curtain after slide exits
     setTimeout(() => {
       setCurtain(true);
-      document.cookie = "intro_seen=1; path=/; SameSite=Lax";
+      // sessionStorage terhapus saat tab ditutup → intro muncul lagi di tab baru
+      sessionStorage.setItem("intro_seen", "1");
       setTimeout(() => {
         router.push("/");
       }, 900);
