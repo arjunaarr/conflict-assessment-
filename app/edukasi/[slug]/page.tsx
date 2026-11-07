@@ -138,7 +138,7 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
         content: [
           { subtitle: "1. Mencegah eskalasi", text: "Mencegah konflik kecil membesar menjadi kerusuhan atau kekerasan." },
           { subtitle: "2. Menjaga persatuan", text: "Menjaga persatuan, ketertiban, dan rasa aman masyarakat." },
-          { subtitle: "3. Efisiensi", text: "Menghemat sumber daya, karena penanganan dini lebih murah daripada pemulihan pascakonflik." },
+          { subtitle: "3. ", text: "Menghemat sumber daya, karena penanganan dini lebih murah daripada pemulihan pascakonflik." },
           { subtitle: "4. Budaya peduli", text: "Membangun budaya saling peduli dan tanggung jawab bersama." },
         ],
       },
@@ -188,8 +188,8 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
     title: "Literasi Informasi",
     color: "bg-slate-100 text-slate-800",
     intro: [
-      "Literasi informasi adalah kemampuan untuk mencari, memahami, menilai, menggunakan, dan menyampaikan informasi secara tepat dan bertanggung jawab. Kemampuan ini penting bagi generasi muda karena informasi dapat diperoleh dengan mudah melalui media sosial, internet, dan berbagai platform digital.",
-      "Memiliki literasi informasi berarti tidak langsung percaya pada setiap informasi yang diterima. Sebelum mempercayai atau menyebarkannya, kita perlu memeriksa sumber, memahami konteks, membandingkan dengan sumber lain, dan memastikan kebenarannya. Hal ini dapat membantu mencegah penyebaran hoaks, kesalahpahaman, dan informasi yang berpotensi memicu konflik sosial."
+      "Literasi informasi adalah kemampuan untuk mencari, memahami, menilai, menggunakan, dan menyampaikan informasi secara tepat dan bertanggung jawab. Kemampuan ini penting bagi generasi muda karena informasi dapat diperoleh dengan mudah melalui media sosial, internet, dan berbagai platform digital. Memiliki literasi informasi berarti tidak langsung percaya pada setiap informasi yang diterima. Sebelum mempercayai atau menyebarkannya, kita perlu memeriksa sumber, memahami konteks, membandingkan dengan sumber lain, dan memastikan kebenarannya. Hal ini dapat membantu mencegah penyebaran hoaks, kesalahpahaman, dan informasi yang berpotensi memicu konflik sosial.",
+
     ],
     sections: [
       {
@@ -279,23 +279,23 @@ const EDUCATION_DATA: Record<string, EdukasiData> = {
       {
         title: "Mengapa Konflik Perlu Dicegah?",
         content: [
-          { subtitle: "1. Mengganggu Keamanan dan Ketertiban", text: "Konflik yang meluas dapat memicu tindakan kekerasan, kerusuhan, atau gangguan keamanan lainnya." },
-          { subtitle: "2. Merusak Hubungan Sosial", text: "Konflik dapat merenggangkan hubungan antarindividu maupun antarkelompok yang sebelumnya hidup rukun." },
-          { subtitle: "3. Mengancam Persatuan Bangsa", text: "Jika konflik antarkelompok dibiarkan, hal ini dapat mengikis rasa persatuan dan kesatuan bangsa." },
-          { subtitle: "4. Menghambat Pembangunan", text: "Wilayah yang sering dilanda konflik cenderung tertinggal dalam pembangunan karena energi tersita untuk menangani konflik." },
-          { subtitle: "5. Menimbulkan Kerugian", text: "Konflik dapat menimbulkan kerugian material maupun nonmaterial (trauma psikologis, hilangnya nyawa)." },
-          { subtitle: "6. Menjaga Kerukunan", text: "Pencegahan konflik bertujuan agar perbedaan-perbedaan ini dapat dikelola secara damai." },
+          { subtitle: "1. Mengganggu Keamanan dan Ketertiban :", text: "Konflik yang meluas dapat memicu tindakan kekerasan, kerusuhan, atau gangguan keamanan lainnya." },
+          { subtitle: "2. Merusak Hubungan Sosial :", text: "Konflik dapat merenggangkan hubungan antarindividu maupun antarkelompok yang sebelumnya hidup rukun." },
+          { subtitle: "3. Mengancam Persatuan Bangsa :", text: "Jika konflik antarkelompok dibiarkan, hal ini dapat mengikis rasa persatuan dan kesatuan bangsa." },
+          { subtitle: "4. Menghambat Pembangunan :", text: "Wilayah yang sering dilanda konflik cenderung tertinggal dalam pembangunan karena energi tersita untuk menangani konflik." },
+          { subtitle: "5. Menimbulkan Kerugian :", text: "Konflik dapat menimbulkan kerugian material maupun nonmaterial (trauma psikologis, hilangnya nyawa)." },
+          { subtitle: "6. Menjaga Kerukunan :", text: "Pencegahan konflik bertujuan agar perbedaan-perbedaan ini dapat dikelola secara damai." },
         ],
       },
       {
         title: "Mengenali Tanda-Tanda Situasi yang Berpotensi Menjadi Konflik",
         content: [
           { subtitle: "1. Meningkatnya ketegangan antarindividu atau antarkelompok :", text: "Suasana menjadi tidak nyaman, muncul sikap saling curiga, dan interaksi yang biasanya cair menjadi kaku atau penuh kewaspadaan." },
-          { subtitle: "2. Kesalahpahaman yang berulang", text: "Perbedaan penafsiran terhadap suatu peristiwa, ucapan, atau tindakan yang tidak segera diluruskan, sehingga terus menumpuk dan memperbesar jarak antarpihak." },
-          { subtitle: "3. Provokasi", text: "Ucapan, tindakan, atau konten (termasuk di media sosial) yang sengaja dibuat untuk memancing kemarahan, memperuncing perbedaan, atau mengadu domba satu pihak dengan pihak lain." },
-          { subtitle: "4. Penyebaran informasi yang belum terbukti kebenarannya (hoaks)  ", text: "Kabar yang beredar cepat tanpa verifikasi dapat memicu kepanikan, kemarahan, atau kebencian terhadap kelompok tertentu secara tidak berdasar." },
-          { subtitle: "5. Sikap intoleran", text: "Mulai munculnya penolakan terhadap perbedaan, baik dalam hal suku, agama, ras, maupun pandangan, yang ditunjukkan melalui ucapan merendahkan, pengucilan, atau diskriminasi." },
-          { subtitle: "6. Perselisihan kecil yang tidak segera diselesaikan ", text: "Masalah yang sebenarnya sepele, jika dibiarkan berlarut-larut tanpa penyelesaian, dapat membesar dan melibatkan lebih banyak pihak." },
+          { subtitle: "2. Kesalahpahaman yang berulang :", text: "Perbedaan penafsiran terhadap suatu peristiwa, ucapan, atau tindakan yang tidak segera diluruskan, sehingga terus menumpuk dan memperbesar jarak antarpihak." },
+          { subtitle: "3. Provokasi :", text: "Ucapan, tindakan, atau konten (termasuk di media sosial) yang sengaja dibuat untuk memancing kemarahan, memperuncing perbedaan, atau mengadu domba satu pihak dengan pihak lain." },
+          { subtitle: "4. Penyebaran informasi yang belum terbukti kebenarannya (hoaks) : ", text: "Kabar yang beredar cepat tanpa verifikasi dapat memicu kepanikan, kemarahan, atau kebencian terhadap kelompok tertentu secara tidak berdasar." },
+          { subtitle: "5. Sikap intoleran :", text: "Mulai munculnya penolakan terhadap perbedaan, baik dalam hal suku, agama, ras, maupun pandangan, yang ditunjukkan melalui ucapan merendahkan, pengucilan, atau diskriminasi." },
+          { subtitle: "6. Perselisihan kecil yang tidak segera diselesaikan :", text: "Masalah yang sebenarnya sepele, jika dibiarkan berlarut-larut tanpa penyelesaian, dapat membesar dan melibatkan lebih banyak pihak." },
         ],
       },
     ],
@@ -336,9 +336,8 @@ function SectionContent({ content, stacked, listAlpha }: { content: string | str
 
   if (Array.isArray(content) && typeof content[0] === "string") {
     return (
-      <ol className={`pl-5 space-y-1.5 text-muted-foreground ${
-        listAlpha ? "list-[lower-alpha]" : "list-decimal"
-      }`}>
+      <ol className={`pl-5 space-y-1.5 text-muted-foreground ${listAlpha ? "list-[lower-alpha]" : "list-decimal"
+        }`}>
         {(content as string[]).map((item, i) => (
           <li key={i} className="text-sm leading-relaxed pl-1">
             {item}
