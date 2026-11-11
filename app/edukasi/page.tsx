@@ -101,10 +101,10 @@ export default function EdukasiPage() {
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="flex items-center gap-2 text-slate-600 mb-3 text-sm font-medium">
               <BookOpen className="h-4 w-4" />
-              <span>Modul Pembelajaran</span>
+              <span>Materi Pembelajaran</span>
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-3">
-              Materi Edukasi Wawasan & Kerukunan
+              Materi Edukasi Pencegahan Konflik Sosial
             </h1>
             <p className="text-slate-600 max-w-3xl leading-relaxed text-sm md:text-base">
               Pelajari berbagai materi esensial mengenai pemahaman konflik sosial, kewaspadaan dini, toleransi, literasi informasi, musyawarah, serta peran aktif dalam menciptakan kerukunan masyarakat.

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, MapPin, Calendar, MessageSquare, ChevronDown, ChevronUp, BookOpen, FlaskConical, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Calendar, MessageSquare, BookOpen, FlaskConical, CheckCircle2 } from "lucide-react";
 
 const SIMULATIONS: Record<
   string,
@@ -243,7 +243,8 @@ Kasus Wadas menarik untuk pembelajaran karena memperlihatkan bagaimana perbedaan
 export default function SimulasiDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const data = SIMULATIONS[id];
-  const [showQuestion, setShowQuestion] = useState(false);
+  const [answer, setAnswer] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   if (!data) {
     return (
@@ -362,36 +363,42 @@ export default function SimulasiDetailPage({ params }: { params: Promise<{ id: s
 
         {/* Simulation Question */}
         <Card className="border border-slate-300 shadow-sm bg-white rounded-xl overflow-hidden">
-          <CardHeader
-            className="cursor-pointer select-none bg-slate-100 hover:bg-slate-200/70 transition-colors py-4 px-6"
-            onClick={() => setShowQuestion(!showQuestion)}
-          >
-            <CardTitle className="text-base font-semibold text-slate-900 flex items-center justify-between">
-              <span className="flex items-center gap-2">
-                <MessageSquare className="h-4 w-4 text-slate-800" />
-                Pertanyaan Simulasi & Refleksi
-              </span>
-              {showQuestion ? (
-                <ChevronUp className="h-4 w-4 text-slate-500" />
-              ) : (
-                <ChevronDown className="h-4 w-4 text-slate-500" />
-              )}
+          <CardHeader className="bg-slate-100 py-4 px-6">
+            <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
+              <MessageSquare className="h-4 w-4 text-slate-800" />
+              Pertanyaan Simulasi & Refleksi
             </CardTitle>
           </CardHeader>
-          {showQuestion && (
-            <CardContent className="p-6 animate-in slide-in-from-top-1 fade-in-20">
-              <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                {data.question}
-              </p>
-            </CardContent>
-          )}
-          {!showQuestion && (
-            <CardContent className="py-4 px-6">
-              <p className="text-xs text-slate-500 italic">
-                Klik untuk menampilkan pertanyaan simulasi dan renungkan jawabanmu.
-              </p>
-            </CardContent>
-          )}
+          <CardContent className="p-6 space-y-4">
+            <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+              {data.question}
+            </p>
+            <textarea
+              value={answer}
+              onChange={e => {
+                setAnswer(e.target.value);
+                if (submitted) setSubmitted(false);
+              }}
+              rows={5}
+              className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-sm sm:text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent resize-y"
+              placeholder="Tuliskan jawabanmu di sini..."
+            />
+            <div className="flex items-center justify-between gap-4 pt-1">
+              <Button
+                onClick={() => setSubmitted(true)}
+                disabled={!answer.trim()}
+                className="bg-slate-900 text-white hover:bg-slate-800"
+              >
+                Kirim Jawaban
+              </Button>
+              {submitted && (
+                <span className="flex items-center gap-1.5 text-sm font-medium text-emerald-600 animate-in fade-in">
+                  <CheckCircle2 className="h-4 w-4" />
+                  Jawaban terkirim!
+                </span>
+              )}
+            </div>
+          </CardContent>
         </Card>
 
         {/* Navigation */}
